@@ -1,0 +1,12 @@
+{
+  "entries": [
+    "components/buttons/general-button/general-button.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "4.41.2",
+    "typescriptVersion": "5.8.3"
+  },
+  "collections": [],
+  "bundles": []
+}

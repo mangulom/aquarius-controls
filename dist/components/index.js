@@ -1,0 +1,1 @@
+export{g as getAssetPath,r as render,s as setAssetPath,a as setNonce,b as setPlatformOptions}from"./p-xUeCeZLa.js";function e(s,e,t){return(s||"")+(e?" "+e:"")+(t?" "+t:"")}export{e as format}
