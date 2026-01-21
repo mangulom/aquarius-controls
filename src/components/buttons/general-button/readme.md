@@ -10,6 +10,7 @@
 | Property   | Attribute  | Description | Type      | Default     |
 | ---------- | ---------- | ----------- | --------- | ----------- |
 | `disabled` | `disabled` |             | `boolean` | `false`     |
+| `icon`     | `icon`     |             | `string`  | `''`        |
 | `label`    | `label`    |             | `string`  | `'Aceptar'` |
 
 

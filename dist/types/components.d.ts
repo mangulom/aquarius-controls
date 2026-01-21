@@ -12,6 +12,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * @default ''
+         */
+        "icon": string;
+        /**
           * @default 'Aceptar'
          */
         "label": string;
@@ -34,6 +38,10 @@ declare namespace LocalJSX {
           * @default false
          */
         "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "icon"?: string;
         /**
           * @default 'Aceptar'
          */
