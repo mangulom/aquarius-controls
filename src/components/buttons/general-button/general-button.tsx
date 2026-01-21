@@ -9,11 +9,13 @@ export class GeneralButton {
 
   @Prop() label: string = 'Aceptar';
   @Prop() disabled: boolean = false;
+  @Prop() icon: string = ''; // nueva prop
 
   render() {
     return (
       <button disabled={this.disabled}>
-        {this.label}
+        {this.icon && <i class={this.icon}></i>}
+        <span>{this.label}</span>
       </button>
     );
   }
