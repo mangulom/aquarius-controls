@@ -2,9 +2,9 @@ import { h } from "@stencil/core";
 export class GeneralButton {
     label = 'Aceptar';
     disabled = false;
-    icon = ''; // nueva prop
+    icon = ''; // Clases de Font Awesome, ejemplo: "fas fa-user"
     render() {
-        return (h("button", { key: '9b8188a71c7ad66ea730d7cc203168501f84422f', disabled: this.disabled }, this.icon && h("i", { key: '3db8a9e70bde17c58f6804c81c7cc6130897f356', class: this.icon }), h("span", { key: 'e7f6442f039fb2fcc4cb6faa15bb73cf5eca601c' }, this.label)));
+        return (h("button", { key: '8c3f149384043a7efd8dd92f2de538c5151e84cc', disabled: this.disabled, class: "general-button" }, this.icon && h("i", { key: '961829dc7428305597fba05f85847a349e628696', class: this.icon }), h("span", { key: '76866fab2a0563b29c9c81269ca5ca47d3ae9c27' }, this.label)));
     }
     static get is() { return "general-button"; }
     static get originalStyleUrls() {
