@@ -2,7 +2,7 @@
 
 var index = require('./index-CFXgGxqc.js');
 
-const generalButtonCss = () => `:host{font-family:var(--app-font-family, Arial, sans-serif)}button{display:inline-flex;align-items:center;gap:0.5rem;font-size:1rem;padding:10px 18px;border-radius:12px;border:none;background:#0063A7;color:white;cursor:pointer;box-shadow:inset 0 0 0 2px white,        inset 4px 4px 8px rgba(0, 0, 0, 0.25),        inset -4px -4px 8px rgba(255, 255, 255, 0.95),        inset 1px 1px 1px rgba(0,0,0,0.25);transition:all 0.12s ease-in-out}button:hover{box-shadow:inset 0 0 0 2px white,        inset 1px 1px 3px rgba(0, 0, 0, 0.2),        inset -1px -1px 3px rgba(255, 255, 255, 0.8)}button:active{box-shadow:inset 0 0 0 2px white,        inset 3px 3px 6px rgba(0, 0, 0, 0.35),        inset -3px -3px 6px rgba(255, 255, 255, 0.7);transform:translateY(1px)}button i{font-size:1.2rem;display:inline-block}`;
+const generalButtonCss = () => `:host{font-family:var(--app-font-family, Arial, sans-serif)}button{position:relative;display:inline-flex;align-items:center;gap:0.5rem;font-size:1rem;padding:10px 18px;border-radius:20px;border:none;background:#0063A7;color:white;cursor:pointer;box-shadow:inset 4px 4px 8px rgba(0, 0, 0, 0.25),        inset -4px -4px 8px rgba(255, 255, 255, 0.95),        inset 1px 1px 1px rgba(0,0,0,0.25);transition:all 0.12s ease-in-out}button::before{content:'';position:absolute;top:2px;left:2px;right:2px;bottom:2px;border:2px solid white;border-radius:18px;pointer-events:none;}button:hover::before{border-color:#ffffffcc;}button:active::before{border-color:#ffffffaa;}button i{font-size:1.2rem;display:inline-block}`;
 
 const GeneralButton = class {
     constructor(hostRef) {
