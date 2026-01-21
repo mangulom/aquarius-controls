@@ -1,3 +1,5 @@
+'use strict';
+
 const NAMESPACE = 'aquarius-controls';
 const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, prop: true, propChangeCallback: false, updatable: true};
 
@@ -170,27 +172,6 @@ var flush = () => {
 };
 var nextTick = (cb) => promiseResolve().then(cb);
 var writeTask = /* @__PURE__ */ queueTask(queueDomWrites, true);
-
-// src/utils/style.ts
-function createStyleSheetIfNeededAndSupported(styles2) {
-  return void 0;
-}
-
-// src/utils/shadow-root.ts
-var globalStyleSheet;
-function createShadowRoot(cmpMeta) {
-  var _a;
-  const opts = { mode: "open" };
-  const shadowRoot = this.attachShadow(opts);
-  if (globalStyleSheet === void 0) globalStyleSheet = (_a = createStyleSheetIfNeededAndSupported()) != null ? _a : null;
-  if (globalStyleSheet) {
-    if (supportsMutableAdoptedStyleSheets) {
-      shadowRoot.adoptedStyleSheets.push(globalStyleSheet);
-    } else {
-      shadowRoot.adoptedStyleSheets = [...shadowRoot.adoptedStyleSheets, globalStyleSheet];
-    }
-  }
-}
 var createTime = (fnName, tagName = "") => {
   {
     return () => {
@@ -321,15 +302,10 @@ var addStyle = (styleContainerNode, cmpMeta, mode) => {
 var attachStyles = (hostRef) => {
   const cmpMeta = hostRef.$cmpMeta$;
   const elm = hostRef.$hostElement$;
-  const flags = cmpMeta.$flags$;
   const endAttachStyles = createTime("attachStyles", cmpMeta.$tagName$);
-  const scopeId2 = addStyle(
-    elm.shadowRoot ? elm.shadowRoot : elm.getRootNode(),
+  addStyle(
+    elm.getRootNode(),
     cmpMeta);
-  if (flags & 10 /* needsScopedEncapsulation */) {
-    elm["s-sc"] = scopeId2;
-    elm.classList.add(scopeId2 + "-h");
-  }
   endAttachStyles();
 };
 var getScopeId = (cmp, mode) => "sc-" + (cmp.$tagName$);
@@ -536,9 +512,6 @@ var createElm = (oldParentVNode, newParentVNode, childIndex) => {
 var addVnodes = (parentElm, before, parentVNode, vnodes, startIdx, endIdx) => {
   let containerElm = parentElm;
   let childNode;
-  if (containerElm.shadowRoot && containerElm.tagName === hostTagName) {
-    containerElm = containerElm.shadowRoot;
-  }
   if (parentVNode.$tag$ === "template") {
     containerElm = containerElm.content;
   }
@@ -709,7 +682,7 @@ var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
   rootVnode.$tag$ = null;
   rootVnode.$flags$ |= 4 /* isHost */;
   hostRef.$vnode$ = rootVnode;
-  rootVnode.$elm$ = oldVNode.$elm$ = hostElm.shadowRoot || hostElm ;
+  rootVnode.$elm$ = oldVNode.$elm$ = hostElm;
   patch(oldVNode, rootVnode, isInitialLoad);
 };
 
@@ -1219,19 +1192,6 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
           super(self);
           self = this;
           registerHost(self, cmpMeta);
-          if (cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
-            {
-              if (!self.shadowRoot) {
-                createShadowRoot.call(self, cmpMeta);
-              } else {
-                if (self.shadowRoot.mode !== "open") {
-                  throw new Error(
-                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
-                  );
-                }
-              }
-            }
-          }
         }
         connectedCallback() {
           const hostRef = getHostRef(this);
@@ -1313,4 +1273,8 @@ function transformTag(tag) {
   return tag;
 }
 
-export { bootstrapLazy as b, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.bootstrapLazy = bootstrapLazy;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;

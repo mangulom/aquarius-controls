@@ -3,10 +3,9 @@ export class GeneralButton {
     label = 'Aceptar';
     disabled = false;
     render() {
-        return (h("button", { key: '85d8ef974a281336468bdcafa8e4693010774ea8', disabled: this.disabled }, this.label));
+        return (h("button", { key: '23761ec29d731e616af3dcdf72fff8443384e521', disabled: this.disabled }, this.label));
     }
     static get is() { return "general-button"; }
-    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["general-button.css"]

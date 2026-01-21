@@ -3,7 +3,7 @@ import { Component, Prop, h } from '@stencil/core';
 @Component({
   tag: 'general-button',
   styleUrl: 'general-button.css',
-  shadow: true
+  shadow: false
 })
 export class GeneralButton {
 
