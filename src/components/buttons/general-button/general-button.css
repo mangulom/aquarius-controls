@@ -1,3 +1,7 @@
+:host {
+  font-family: var(--app-font-family);
+}
+
 button {
     font-size: 1.2rem;
     padding: 10px 18px;
