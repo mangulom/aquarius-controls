@@ -6,56 +6,48 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface GeneralButton {
         /**
-          * The first name
+          * @default false
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * @default 'Aceptar'
          */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "label": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLGeneralButtonElement extends Components.GeneralButton, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLGeneralButtonElement: {
+        prototype: HTMLGeneralButtonElement;
+        new (): HTMLGeneralButtonElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "general-button": HTMLGeneralButtonElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface GeneralButton {
         /**
-          * The first name
+          * @default false
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * @default 'Aceptar'
          */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "label"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "general-button": GeneralButton;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
         }
     }
 }
