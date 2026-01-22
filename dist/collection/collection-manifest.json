@@ -2,7 +2,8 @@
   "entries": [
     "components/navbars/navbar-footer/navbar-footer.js",
     "components/navbars/navbar-horizontal/navbar-horizontal.js",
-    "components/buttons/general-button/general-button.js"
+    "components/buttons/general-button/general-button.js",
+    "components/buttons/hold-expand-button/hold-expand-button.js"
   ],
   "compiler": {
     "name": "@stencil/core",

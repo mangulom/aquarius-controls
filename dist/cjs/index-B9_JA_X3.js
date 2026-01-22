@@ -1,3 +1,5 @@
+'use strict';
+
 const NAMESPACE = 'aquarius-controls';
 const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: false, state: true, updatable: true};
 
@@ -389,6 +391,9 @@ var parsePropertyValue = (propValue, propType, isFormAssociated) => {
       {
         return propValue === "false" ? false : propValue === "" || !!propValue;
       }
+    }
+    if (propType & 2 /* Number */) {
+      return typeof propValue === "string" ? parseFloat(propValue) : typeof propValue === "number" ? propValue : NaN;
     }
     if (propType & 1 /* String */) {
       return String(propValue);
@@ -1315,4 +1320,8 @@ function transformTag(tag) {
   return tag;
 }
 
-export { bootstrapLazy as b, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.bootstrapLazy = bootstrapLazy;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;

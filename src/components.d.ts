@@ -29,6 +29,24 @@ export namespace Components {
          */
         "label": string;
     }
+    interface HoldExpandButton {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default 2000
+         */
+        "holdTime": number;
+        /**
+          * @default 'fas fa-save'
+         */
+        "icon": string;
+        /**
+          * @default 'Guardar'
+         */
+        "label": string;
+    }
     interface NavbarFooter {
         /**
           * @default []
@@ -50,6 +68,12 @@ declare global {
         prototype: HTMLGeneralButtonElement;
         new (): HTMLGeneralButtonElement;
     };
+    interface HTMLHoldExpandButtonElement extends Components.HoldExpandButton, HTMLStencilElement {
+    }
+    var HTMLHoldExpandButtonElement: {
+        prototype: HTMLHoldExpandButtonElement;
+        new (): HTMLHoldExpandButtonElement;
+    };
     interface HTMLNavbarFooterElement extends Components.NavbarFooter, HTMLStencilElement {
     }
     var HTMLNavbarFooterElement: {
@@ -64,6 +88,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "general-button": HTMLGeneralButtonElement;
+        "hold-expand-button": HTMLHoldExpandButtonElement;
         "navbar-footer": HTMLNavbarFooterElement;
         "navbar-horizontal": HTMLNavbarHorizontalElement;
     }
@@ -88,6 +113,24 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface HoldExpandButton {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default 2000
+         */
+        "holdTime"?: number;
+        /**
+          * @default 'fas fa-save'
+         */
+        "icon"?: string;
+        /**
+          * @default 'Guardar'
+         */
+        "label"?: string;
+    }
     interface NavbarFooter {
         /**
           * @default []
@@ -103,6 +146,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "general-button": GeneralButton;
+        "hold-expand-button": HoldExpandButton;
         "navbar-footer": NavbarFooter;
         "navbar-horizontal": NavbarHorizontal;
     }
@@ -112,6 +156,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
+            "hold-expand-button": LocalJSX.HoldExpandButton & JSXBase.HTMLAttributes<HTMLHoldExpandButtonElement>;
             "navbar-footer": LocalJSX.NavbarFooter & JSXBase.HTMLAttributes<HTMLNavbarFooterElement>;
             "navbar-horizontal": LocalJSX.NavbarHorizontal & JSXBase.HTMLAttributes<HTMLNavbarHorizontalElement>;
         }
