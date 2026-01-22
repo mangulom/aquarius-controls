@@ -41,7 +41,7 @@ export namespace Components {
         "disabled": boolean;
         /**
           * Tiempo de presión en ms
-          * @default 2000
+          * @default 1000
          */
         "holdTime": number;
         /**
@@ -131,7 +131,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         /**
           * Tiempo de presión en ms
-          * @default 2000
+          * @default 1000
          */
         "holdTime"?: number;
         /**

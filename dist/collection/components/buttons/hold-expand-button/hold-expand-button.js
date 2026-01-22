@@ -6,7 +6,7 @@ export class HoldExpandButton {
     /** Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY */
     color = 'PRIMARY';
     /** Tiempo de presión en ms */
-    holdTime = 2000;
+    holdTime = 1000;
     expanded = false;
     timer;
     startHold = () => {
@@ -135,7 +135,7 @@ export class HoldExpandButton {
                 "setter": false,
                 "reflect": false,
                 "attribute": "hold-time",
-                "defaultValue": "2000"
+                "defaultValue": "1000"
             }
         };
     }

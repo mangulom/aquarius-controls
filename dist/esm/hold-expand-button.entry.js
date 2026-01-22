@@ -12,7 +12,7 @@ const HoldExpandButton = class {
     /** Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY */
     color = 'PRIMARY';
     /** Tiempo de presión en ms */
-    holdTime = 2000;
+    holdTime = 1000;
     expanded = false;
     timer;
     startHold = () => {

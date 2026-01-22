@@ -15,7 +15,7 @@ export class HoldExpandButton {
   @Prop() color: string = 'PRIMARY';
 
   /** Tiempo de presión en ms */
-  @Prop() holdTime: number = 2000;
+  @Prop() holdTime: number = 1000;
 
   @State() expanded: boolean = false;
 
