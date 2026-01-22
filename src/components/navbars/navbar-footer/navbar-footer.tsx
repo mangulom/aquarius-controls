@@ -1,4 +1,4 @@
-import { Component, Prop, h, State } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 
 export interface NavbarItem {
   label: string;
@@ -16,25 +16,19 @@ export class NavbarFooter {
   /** Lista de items principales */
   @Prop() items: NavbarItem[] = [];
 
-  @State() openIndex: number | null = null;
-
-  toggleDropdown(index: number) {
-    this.openIndex = this.openIndex === index ? null : index;
-  }
-
   render() {
     return (
       <footer class="navbar-footer">
         <div class="navbar-buttons">
-          {this.items.map((item, index) => (
+          {this.items.map((item) => (
             <div class="nav-item-wrapper">
-              <button class="nav-item" onClick={() => this.toggleDropdown(index)}>
+              <button class="nav-item">
                 {item.icon && <i class={item.icon}></i>}
                 <span>{item.label}</span>
               </button>
 
-              {/* Subitems hacia arriba */}
-              {item.subitems && this.openIndex === index && (
+              {/* Subitems siempre visibles */}
+              {item.subitems && (
                 <div class="subitems-up">
                   {item.subitems.map(sub => (
                     <button class="subitem">
