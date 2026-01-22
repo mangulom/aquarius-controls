@@ -12,6 +12,11 @@ export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizonta
 export namespace Components {
     interface GeneralButton {
         /**
+          * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
+          * @default 'PRIMARY'
+         */
+        "color": string;
+        /**
           * @default false
          */
         "disabled": boolean;
@@ -65,6 +70,11 @@ declare global {
 }
 declare namespace LocalJSX {
     interface GeneralButton {
+        /**
+          * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
+          * @default 'PRIMARY'
+         */
+        "color"?: string;
         /**
           * @default false
          */
