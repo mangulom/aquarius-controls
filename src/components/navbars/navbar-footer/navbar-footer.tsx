@@ -32,7 +32,7 @@ export class NavbarFooter {
                 <span>{item.label}</span>
               </button>
 
-              {/* Cuadro de subitems que se desplaza desde abajo */}
+              {/* Cuadro de subitems */}
               {item.subitems && (
                 <div class={{
                   'subitems-container': true,
