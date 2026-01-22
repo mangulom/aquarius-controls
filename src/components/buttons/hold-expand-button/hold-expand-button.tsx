@@ -49,7 +49,7 @@ export class HoldExpandButton {
             >
                 <div class="content">
                     {this.icon && <i class={this.icon}></i>}
-                    <span class="label">{this.label}</span>
+                    {this.label && <span class="label">{this.label}</span>}
                 </div>
             </button>
         );
