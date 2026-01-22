@@ -12,7 +12,7 @@ const GeneralButton = class {
     disabled = false;
     icon = ''; // Clases de Font Awesome, ejemplo: "fas fa-user"
     render() {
-        return (index.h("button", { key: '8c3f149384043a7efd8dd92f2de538c5151e84cc', disabled: this.disabled, class: "general-button" }, this.icon && index.h("i", { key: '961829dc7428305597fba05f85847a349e628696', class: this.icon }), index.h("span", { key: '76866fab2a0563b29c9c81269ca5ca47d3ae9c27' }, this.label)));
+        return (index.h("button", { key: '3c14614ff766683c6e369f20a9a67c8749c18fb2', disabled: this.disabled, class: "general-button" }, this.icon && index.h("i", { key: '0909a58293f3c33c77c474e8239e8a6094df4d90', class: this.icon }), index.h("span", { key: '9aac55c8539f255179ecdcdb7fd5835122a0e46a' }, this.label)));
     }
 };
 GeneralButton.style = generalButtonCss();

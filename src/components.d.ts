@@ -5,8 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { NavbarItem } from "./components/navbars/navbar-horizontal/navbar-horizontal";
-export { NavbarItem } from "./components/navbars/navbar-horizontal/navbar-horizontal";
+import { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
+import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
+export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
+export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
 export namespace Components {
     interface GeneralButton {
         /**
@@ -22,12 +24,19 @@ export namespace Components {
          */
         "label": string;
     }
-    interface NavbarHorizontal {
+    interface NavbarFooter {
         /**
           * Lista de items principales
           * @default []
          */
         "items": NavbarItem[];
+    }
+    interface NavbarHorizontal {
+        /**
+          * Lista de items principales
+          * @default []
+         */
+        "items": NavbarItem1[];
     }
 }
 declare global {
@@ -37,6 +46,12 @@ declare global {
         prototype: HTMLGeneralButtonElement;
         new (): HTMLGeneralButtonElement;
     };
+    interface HTMLNavbarFooterElement extends Components.NavbarFooter, HTMLStencilElement {
+    }
+    var HTMLNavbarFooterElement: {
+        prototype: HTMLNavbarFooterElement;
+        new (): HTMLNavbarFooterElement;
+    };
     interface HTMLNavbarHorizontalElement extends Components.NavbarHorizontal, HTMLStencilElement {
     }
     var HTMLNavbarHorizontalElement: {
@@ -45,6 +60,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "general-button": HTMLGeneralButtonElement;
+        "navbar-footer": HTMLNavbarFooterElement;
         "navbar-horizontal": HTMLNavbarHorizontalElement;
     }
 }
@@ -63,15 +79,23 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
-    interface NavbarHorizontal {
+    interface NavbarFooter {
         /**
           * Lista de items principales
           * @default []
          */
         "items"?: NavbarItem[];
     }
+    interface NavbarHorizontal {
+        /**
+          * Lista de items principales
+          * @default []
+         */
+        "items"?: NavbarItem1[];
+    }
     interface IntrinsicElements {
         "general-button": GeneralButton;
+        "navbar-footer": NavbarFooter;
         "navbar-horizontal": NavbarHorizontal;
     }
 }
@@ -80,6 +104,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
+            "navbar-footer": LocalJSX.NavbarFooter & JSXBase.HTMLAttributes<HTMLNavbarFooterElement>;
             "navbar-horizontal": LocalJSX.NavbarHorizontal & JSXBase.HTMLAttributes<HTMLNavbarHorizontalElement>;
         }
     }
