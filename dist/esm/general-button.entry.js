@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-DOy5Qy8K.js';
+import { r as registerInstance, h } from './index-CZ9uDaiH.js';
 
 const generalButtonCss = () => `:host{font-family:var(--app-font-family, Arial, sans-serif)}button{position:relative;display:inline-flex;align-items:center;gap:0.5rem;font-size:1rem;padding:14px 22px;border-radius:20px;border:none;background:#0063A7;color:white;cursor:pointer;box-shadow:none;transition:all 0.12s ease-in-out}button::before{content:'';position:absolute;top:2px;left:2px;right:2px;bottom:2px;border:2px solid white;border-radius:18px;pointer-events:none}button:hover::before{border-color:#ffffffcc}button:active::before{border-color:#ffffffaa}button i{font-size:1.2rem;display:inline-block}`;
 

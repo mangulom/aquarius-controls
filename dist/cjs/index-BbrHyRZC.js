@@ -1,7 +1,7 @@
 'use strict';
 
 const NAMESPACE = 'aquarius-controls';
-const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, prop: true, propChangeCallback: false, updatable: true};
+const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: false, state: true, updatable: true};
 
 /*
  Stencil Client Platform v4.41.2 | MIT Licensed | https://stenciljs.com
@@ -51,7 +51,7 @@ var registerInstance = (lazyInstance, hostRef) => {
   if (!hostRef) return;
   lazyInstance.__stencil__getHostRef = () => hostRef;
   hostRef.$lazyInstance$ = lazyInstance;
-  if (hostRef.$cmpMeta$.$flags$ & 512 /* hasModernPropertyDecls */ && (BUILD.prop)) {
+  if (hostRef.$cmpMeta$.$flags$ & 512 /* hasModernPropertyDecls */ && (BUILD.state)) {
     reWireGetterSetter(lazyInstance, hostRef);
   }
 };
@@ -409,7 +409,7 @@ var setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags, initialRen
     return;
   }
   let isProp = isMemberInElement(elm, memberName);
-  memberName.toLowerCase();
+  let ln = memberName.toLowerCase();
   if (memberName === "class") {
     const classList = elm.classList;
     const oldClasses = parseClassList(oldValue);
@@ -418,7 +418,25 @@ var setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags, initialRen
       classList.remove(...oldClasses.filter((c) => c && !newClasses.includes(c)));
       classList.add(...newClasses.filter((c) => c && !oldClasses.includes(c)));
     }
-  } else if (memberName === "key") ; else {
+  } else if (memberName === "key") ; else if ((!isProp ) && memberName[0] === "o" && memberName[1] === "n") {
+    if (memberName[2] === "-") {
+      memberName = memberName.slice(3);
+    } else if (isMemberInElement(win, ln)) {
+      memberName = ln.slice(2);
+    } else {
+      memberName = ln[2] + memberName.slice(3);
+    }
+    if (oldValue || newValue) {
+      const capture = memberName.endsWith(CAPTURE_EVENT_SUFFIX);
+      memberName = memberName.replace(CAPTURE_EVENT_REGEX, "");
+      if (oldValue) {
+        plt.rel(elm, memberName, oldValue, capture);
+      }
+      if (newValue) {
+        plt.ael(elm, memberName, newValue, capture);
+      }
+    }
+  } else {
     const isComplex = isComplexType(newValue);
     if ((isProp || isComplex && newValue !== null) && true) {
       try {
@@ -463,6 +481,8 @@ var parseClassList = (value) => {
   }
   return value.split(parseClassListRegex);
 };
+var CAPTURE_EVENT_SUFFIX = "Capture";
+var CAPTURE_EVENT_REGEX = new RegExp(CAPTURE_EVENT_SUFFIX + "$");
 
 // src/runtime/vdom/update-element.ts
 var updateElement = (oldVnode, newVnode, isSvgMode2, isInitialRender) => {
