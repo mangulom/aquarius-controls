@@ -31,10 +31,16 @@ export namespace Components {
     }
     interface HoldExpandButton {
         /**
+          * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
+          * @default 'PRIMARY'
+         */
+        "color": string;
+        /**
           * @default false
          */
         "disabled": boolean;
         /**
+          * Tiempo de presión en ms
           * @default 2000
          */
         "holdTime": number;
@@ -115,10 +121,16 @@ declare namespace LocalJSX {
     }
     interface HoldExpandButton {
         /**
+          * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
+          * @default 'PRIMARY'
+         */
+        "color"?: string;
+        /**
           * @default false
          */
         "disabled"?: boolean;
         /**
+          * Tiempo de presión en ms
           * @default 2000
          */
         "holdTime"?: number;

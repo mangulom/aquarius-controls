@@ -1,51 +1,55 @@
 import { Component, Prop, State, h } from '@stencil/core';
 
 @Component({
-    tag: 'hold-expand-button',
-    styleUrl: 'hold-expand-button.css',
-    shadow: false
+  tag: 'hold-expand-button',
+  styleUrl: 'hold-expand-button.css',
+  shadow: false
 })
 export class HoldExpandButton {
 
-    @Prop() label: string = 'Guardar';
-    @Prop() icon: string = 'fas fa-save';
-    @Prop() disabled: boolean = false;
-    @Prop() holdTime: number = 2000; // ms
+  @Prop() label: string = 'Guardar';
+  @Prop() icon: string = 'fas fa-save';
+  @Prop() disabled: boolean = false;
 
-    @State() expanded: boolean = false;
+  /** Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY */
+  @Prop() color: string = 'PRIMARY';
 
-    private timer: any;
+  /** Tiempo de presión en ms */
+  @Prop() holdTime: number = 2000;
 
-    private startHold = () => {
-        if (this.disabled) return;
+  @State() expanded: boolean = false;
 
-        this.timer = setTimeout(() => {
-            this.expanded = true;
-        }, this.holdTime);
-    };
+  private timer: any;
 
-    private endHold = () => {
-        clearTimeout(this.timer);
-        this.expanded = false;
-    };
+  private startHold = () => {
+    if (this.disabled) return;
 
-    render() {
-        return (
-            <button
-                class={{
-                    'hold-btn': true,
-                    'expanded': this.expanded
-                }}
-                disabled={this.disabled}
-                onMouseDown={this.startHold}
-                onMouseUp={this.endHold}
-                onMouseLeave={this.endHold}
-                onTouchStart={this.startHold}
-                onTouchEnd={this.endHold}
-            >
-                <i class={this.icon}></i>
-                <span class="label">{this.label}</span>
-            </button>
-        );
-    }
+    this.timer = setTimeout(() => {
+      this.expanded = true;
+    }, this.holdTime);
+  };
+
+  private endHold = () => {
+    clearTimeout(this.timer);
+    this.expanded = false;
+  };
+
+  render() {
+    const colorClass = `btn-${this.color.toLowerCase()}`;
+
+    return (
+      <button
+        disabled={this.disabled}
+        class={`hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`}
+        onMouseDown={this.startHold}
+        onMouseUp={this.endHold}
+        onMouseLeave={this.endHold}
+        onTouchStart={this.startHold}
+        onTouchEnd={this.endHold}
+      >
+        {this.icon && <i class={this.icon}></i>}
+        <span class="label">{this.label}</span>
+      </button>
+    );
+  }
 }

@@ -3,7 +3,10 @@ export class HoldExpandButton {
     label = 'Guardar';
     icon = 'fas fa-save';
     disabled = false;
-    holdTime = 2000; // ms
+    /** Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY */
+    color = 'PRIMARY';
+    /** Tiempo de presión en ms */
+    holdTime = 2000;
     expanded = false;
     timer;
     startHold = () => {
@@ -18,10 +21,8 @@ export class HoldExpandButton {
         this.expanded = false;
     };
     render() {
-        return (h("button", { key: 'b4da737a480cf2a3f7f4e9f0d4b135f1a188fb15', class: {
-                'hold-btn': true,
-                'expanded': this.expanded
-            }, disabled: this.disabled, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, h("i", { key: 'b390cfb880ce25db315bed0f304e5d5a6522b1ce', class: this.icon }), h("span", { key: '9b7040dcb2d146aed1089588a413b6d551ca6b26', class: "label" }, this.label)));
+        const colorClass = `btn-${this.color.toLowerCase()}`;
+        return (h("button", { key: 'ac798869385c3d6e7db24717f9605e7183eece06', disabled: this.disabled, class: `hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, this.icon && h("i", { key: '87931c797b7e28f0756f3832720ef87978ff94d9', class: this.icon }), h("span", { key: '8c62d73926c35110e6945c0df30f5d7fe26066b0', class: "label" }, this.label)));
     }
     static get is() { return "hold-expand-button"; }
     static get originalStyleUrls() {
@@ -96,6 +97,26 @@ export class HoldExpandButton {
                 "attribute": "disabled",
                 "defaultValue": "false"
             },
+            "color": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Color del bot\u00F3n: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY"
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "color",
+                "defaultValue": "'PRIMARY'"
+            },
             "holdTime": {
                 "type": "number",
                 "mutable": false,
@@ -108,7 +129,7 @@ export class HoldExpandButton {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": ""
+                    "text": "Tiempo de presi\u00F3n en ms"
                 },
                 "getter": false,
                 "setter": false,
