@@ -4,7 +4,7 @@ export class GeneralButton {
     disabled = false;
     icon = ''; // Clases de Font Awesome, ejemplo: "fas fa-user"
     render() {
-        return (h("button", { key: '3c14614ff766683c6e369f20a9a67c8749c18fb2', disabled: this.disabled, class: "general-button" }, this.icon && h("i", { key: '0909a58293f3c33c77c474e8239e8a6094df4d90', class: this.icon }), h("span", { key: '9aac55c8539f255179ecdcdb7fd5835122a0e46a' }, this.label)));
+        return (h("button", { key: '79cbfe72e6c019c32655d90a933f169c89163fa3', disabled: this.disabled, class: "general-button" }, this.icon && h("i", { key: '277c90407ccfdc922113dc7d5597410d80043f78', class: this.icon }), h("span", { key: 'ea5d96cf89a97b01c920e510c4c25610aa47753d' }, this.label)));
     }
     static get is() { return "general-button"; }
     static get originalStyleUrls() {

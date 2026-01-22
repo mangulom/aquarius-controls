@@ -13,7 +13,7 @@ const NavbarHorizontal = class {
         this.openIndex = this.openIndex === index ? null : index;
     }
     render() {
-        return (h("nav", { key: '8ee58aa53b8d61ff00454f1a757dcf81e8ef96a3', class: "navbar" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && this.openIndex === index && (h("div", { class: "subitems" }, item.subitems.map(sub => (h("button", { class: "subitem" }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label)))))))))));
+        return (h("nav", { key: '5e7fef785ad05329c45d8a1e6e688ea2e6edc334', class: "navbar" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && this.openIndex === index && (h("div", { class: "subitems" }, item.subitems.map(sub => (h("button", { class: "subitem" }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label)))))))))));
     }
 };
 NavbarHorizontal.style = navbarHorizontalCss();

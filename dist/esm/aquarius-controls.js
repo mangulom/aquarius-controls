@@ -17,5 +17,5 @@ var patchBrowser = () => {
 
 patchBrowser().then(async (options) => {
   await globalScripts();
-  return bootstrapLazy([["general-button",[[512,"general-button",{"label":[1],"disabled":[4],"icon":[1]}]]],["navbar-footer",[[512,"navbar-footer",{"items":[16],"openIndex":[32]}]]],["navbar-horizontal",[[512,"navbar-horizontal",{"items":[16],"openIndex":[32]}]]]], options);
+  return bootstrapLazy([["general-button",[[512,"general-button",{"label":[1],"disabled":[4],"icon":[1]}]]],["navbar-footer",[[512,"navbar-footer",{"items":[16]}]]],["navbar-horizontal",[[512,"navbar-horizontal",{"items":[16],"openIndex":[32]}]]]], options);
 });
