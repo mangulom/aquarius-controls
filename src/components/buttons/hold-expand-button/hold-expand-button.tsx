@@ -47,9 +47,9 @@ export class HoldExpandButton {
                 onTouchStart={this.startHold}
                 onTouchEnd={this.endHold}
             >
-                <div class="content">
+                <div class="center">
                     {this.icon && <i class={this.icon}></i>}
-                    {this.label && <span class="label">{this.label}</span>}
+                    <span class="label">{this.label}</span>
                 </div>
             </button>
         );
