@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                | Type           | Default |
-| -------- | --------- | -------------------------- | -------------- | ------- |
-| `items`  | --        | Lista de items principales | `NavbarItem[]` | `[]`    |
+| Property | Attribute | Description | Type           | Default |
+| -------- | --------- | ----------- | -------------- | ------- |
+| `items`  | --        |             | `NavbarItem[]` | `[]`    |
 
 
 ----------------------------------------------

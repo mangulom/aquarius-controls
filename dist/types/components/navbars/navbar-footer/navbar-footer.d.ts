@@ -4,7 +4,8 @@ export interface NavbarItem {
     subitems?: NavbarItem[];
 }
 export declare class NavbarFooter {
-    /** Lista de items principales */
     items: NavbarItem[];
+    openIndex: number | null;
+    toggleDropdown(index: number): void;
     render(): any;
 }

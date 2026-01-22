@@ -26,7 +26,6 @@ export namespace Components {
     }
     interface NavbarFooter {
         /**
-          * Lista de items principales
           * @default []
          */
         "items": NavbarItem[];
@@ -81,7 +80,6 @@ declare namespace LocalJSX {
     }
     interface NavbarFooter {
         /**
-          * Lista de items principales
           * @default []
          */
         "items"?: NavbarItem[];

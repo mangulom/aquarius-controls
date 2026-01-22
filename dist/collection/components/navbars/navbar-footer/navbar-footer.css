@@ -22,9 +22,7 @@
 }
 
 .nav-item-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
 }
 
 .nav-item {
@@ -43,22 +41,43 @@
   font-size: 0.85rem;
   gap: 2px;
   white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.nav-item:hover {
+  background: #0056a0;
 }
 
 .nav-item i {
   font-size: 1.3rem;
 }
 
-/* Subitems siempre visibles */
-.subitems-up {
+/* Contenedor de subitems */
+.subitems-container {
+  position: absolute;
+  bottom: 100%; /* se desplaza desde abajo del botón */
+  left: 50%;
+  transform: translateX(-50%) translateY(20px); /* fuera de vista inicialmente */
+  opacity: 0;
   display: flex;
   flex-direction: column;
-  background: #0063A7; /* mismo color que barra */
-  padding: 4px 0;
-  gap: 2px;
-  width: 100%;
+  background: #0063A7;
+  border-radius: 0;
+  padding: 6px 0;
+  min-width: 120px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 10;
 }
 
+/* Cuando se abre */
+.subitems-container.open {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Subitems */
 .subitem {
   display: flex;
   align-items: center;
@@ -78,12 +97,12 @@
   font-size: 1rem;
 }
 
-/* Efecto hover */
+/* Hover de subitems */
 .subitem:hover {
-  background: rgba(255, 255, 255, 0.2); /* resalta sobre la barra */
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Línea inferior blanca con texto muy pequeño */
+/* Línea inferior blanca */
 .footer-text {
   width: 100%;
   text-align: center;
