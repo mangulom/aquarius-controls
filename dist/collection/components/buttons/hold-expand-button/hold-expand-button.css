@@ -155,7 +155,7 @@ button.hold-button:disabled {
 button.hold-button i {
   display: flex;
   align-items: center;
-  padding-left: 8px !important;
+  padding-left: 12px !important;
   font-size: 1.2rem;
   line-height: 1;
 }
