@@ -58,8 +58,8 @@ button.hold-button::before {
 
 button.hold-button.expanded {
   width: 180px;
-  padding: 0 22px;
-  justify-content: flex-start;
+  padding: 0 26px;     /* más aire lateral */
+  justify-content: center;  /* centra icono + texto */
   border-radius: 20px;
 }
 
