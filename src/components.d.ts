@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { NavbarItem } from "./components/navbars/navbar-horizontal/navbar-horizontal";
+export { NavbarItem } from "./components/navbars/navbar-horizontal/navbar-horizontal";
 export namespace Components {
     interface GeneralButton {
         /**
@@ -20,6 +22,13 @@ export namespace Components {
          */
         "label": string;
     }
+    interface NavbarHorizontal {
+        /**
+          * Lista de items principales
+          * @default []
+         */
+        "items": NavbarItem[];
+    }
 }
 declare global {
     interface HTMLGeneralButtonElement extends Components.GeneralButton, HTMLStencilElement {
@@ -28,8 +37,15 @@ declare global {
         prototype: HTMLGeneralButtonElement;
         new (): HTMLGeneralButtonElement;
     };
+    interface HTMLNavbarHorizontalElement extends Components.NavbarHorizontal, HTMLStencilElement {
+    }
+    var HTMLNavbarHorizontalElement: {
+        prototype: HTMLNavbarHorizontalElement;
+        new (): HTMLNavbarHorizontalElement;
+    };
     interface HTMLElementTagNameMap {
         "general-button": HTMLGeneralButtonElement;
+        "navbar-horizontal": HTMLNavbarHorizontalElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +63,16 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface NavbarHorizontal {
+        /**
+          * Lista de items principales
+          * @default []
+         */
+        "items"?: NavbarItem[];
+    }
     interface IntrinsicElements {
         "general-button": GeneralButton;
+        "navbar-horizontal": NavbarHorizontal;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +80,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
+            "navbar-horizontal": LocalJSX.NavbarHorizontal & JSXBase.HTMLAttributes<HTMLNavbarHorizontalElement>;
         }
     }
 }
