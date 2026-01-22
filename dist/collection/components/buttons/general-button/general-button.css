@@ -3,97 +3,108 @@
 }
 
 button {
-  position: relative;           /* necesario para ::before */
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;                  /* espacio entre icono y texto */
+  gap: 0.5rem;
 
   font-size: 1rem;
-  padding: 14px 22px;           /* mayor altura y ancho */
+  padding: 14px 26px;        /* más ancho lateral */
   border-radius: 20px;
   border: none;
   background: #0063A7;
   color: white;
   cursor: pointer;
 
-  /* Quitar sombras */
   box-shadow: none;
 
-  transition: all 0.12s ease-in-out;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease,
+    background-color 0.15s ease;
 }
 
-/* Borde interior blanco usando ::before */
+/* ==========================
+   Borde interior por defecto
+========================== */
+
 button::before {
   content: '';
   position: absolute;
-  top: 2px;       
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  border: 2px solid white;
-  border-radius: 18px; 
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 2px solid rgba(255,255,255,0.9);
+  border-radius: 16px;
   pointer-events: none;
+  transition: border-color 0.15s ease;
 }
 
-.general-button i {
-  font-size: 1.2rem;
+/* LIGHT → borde gris visible */
+.general-button.btn-light::before {
+  border-color: #adb5bd;
 }
 
-/* Colores tipo Bootstrap */
-.general-button.btn-primary {
-  background-color: #0063a7;
+/* ==========================
+   Hover (más fuerte)
+========================== */
+
+button:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
 }
 
-.general-button.btn-success {
-  background-color: #198754;
+/* LIGHT hover */
+.general-button.btn-light:hover {
+  background-color: #e9ecef;
 }
 
-.general-button.btn-danger {
-  background-color: #dc3545;
+/* ==========================
+   Active / Click
+========================== */
+
+button:active {
+  transform: translateY(1px) scale(0.97);
+  filter: brightness(0.9);
 }
 
-.general-button.btn-warning {
-  background-color: #ffc107;
-  color: #212529; /* texto oscuro */
+button:active::before {
+  border-color: rgba(255,255,255,0.6);
 }
 
-.general-button.btn-info {
-  background-color: #1192d1;
-  color: #212529; /* texto oscuro */
-}
+/* ==========================
+   Colores Bootstrap
+========================== */
 
-.general-button.btn-secondary {
-  background-color: #6c757d;
-}
-
-.general-button.btn-dark {
-  background-color: #212529;
-}
+.general-button.btn-primary   { background-color: #0063a7; }
+.general-button.btn-success   { background-color: #198754; }
+.general-button.btn-danger    { background-color: #dc3545; }
+.general-button.btn-warning   { background-color: #ffc107; color: #212529; }
+.general-button.btn-info      { background-color: #1192d1; color: #212529; }
+.general-button.btn-secondary { background-color: #6c757d; }
+.general-button.btn-dark      { background-color: #212529; }
 
 .general-button.btn-light {
   background-color: #f8f9fa;
-  color: #212529; /* texto oscuro */
+  color: #212529;
 }
 
-/* Hover ligero */
-.general-button:hover {
-  filter: brightness(0.9);
-}
+/* ==========================
+   Disabled
+========================== */
 
 .general-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  filter: none;
 }
 
-button:hover::before {
-  border-color: #ffffffcc; 
-}
+/* ==========================
+   Icono
+========================== */
 
-button:active::before {
-  border-color: #ffffffaa; 
-}
-
-/* Icono dentro del botón */
 button i {
   font-size: 1.2rem;
   display: inline-block;
