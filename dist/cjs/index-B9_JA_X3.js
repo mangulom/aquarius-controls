@@ -1,3 +1,5 @@
+'use strict';
+
 const NAMESPACE = 'aquarius-controls';
 const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: false, state: true, updatable: true};
 
@@ -713,19 +715,10 @@ var insertBefore = (parent, newNode, reference, isInitialLoad) => {
 };
 var renderVdom = (hostRef, renderFnResults, isInitialLoad = false) => {
   const hostElm = hostRef.$hostElement$;
-  const cmpMeta = hostRef.$cmpMeta$;
   const oldVNode = hostRef.$vnode$ || newVNode(null, null);
   const isHostElement = isHost(renderFnResults);
   const rootVnode = isHostElement ? renderFnResults : h(null, null, renderFnResults);
   hostTagName = hostElm.tagName;
-  if (cmpMeta.$attrsToReflect$) {
-    rootVnode.$attrs$ = rootVnode.$attrs$ || {};
-    cmpMeta.$attrsToReflect$.forEach(([propName, attribute]) => {
-      {
-        rootVnode.$attrs$[attribute] = hostElm[propName];
-      }
-    });
-  }
   if (isInitialLoad && rootVnode.$attrs$) {
     for (const key of Object.keys(rootVnode.$attrs$)) {
       if (hostElm.hasAttribute(key) && !["key", "ref", "style", "class"].includes(key)) {
@@ -1061,12 +1054,8 @@ var proxyComponent = (Cstr, cmpMeta, flags) => {
         /* @__PURE__ */ new Set([
           ...Object.keys((_b = cmpMeta.$watchers$) != null ? _b : {}),
           ...members.filter(([_, m]) => m[0] & 31 /* HasAttribute */).map(([propName, m]) => {
-            var _a2;
             const attrName = m[1] || propName;
             attrNameToPropName.set(attrName, propName);
-            if (m[0] & 512 /* ReflectAttr */) {
-              (_a2 = cmpMeta.$attrsToReflect$) == null ? void 0 : _a2.push([propName, attrName]);
-            }
             return attrName;
           })
         ])
@@ -1240,9 +1229,6 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
       {
         cmpMeta.$members$ = compactMeta[2];
       }
-      {
-        cmpMeta.$attrsToReflect$ = [];
-      }
       const tagName = transformTag(cmpMeta.$tagName$);
       const HostElement = class extends HTMLElement {
         ["s-p"];
@@ -1334,4 +1320,8 @@ function transformTag(tag) {
   return tag;
 }
 
-export { bootstrapLazy as b, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.bootstrapLazy = bootstrapLazy;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;

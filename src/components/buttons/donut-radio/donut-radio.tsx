@@ -10,18 +10,9 @@ export class DonutRadio {
   @Prop() name!: string;
   @Prop() value!: string;
   @Prop() label: string = '';
-
-  @Prop({ mutable: true, reflect: true })
-  checked: boolean = false;
-
+  @Prop() checked: boolean = false;
   @Prop() disabled: boolean = false;
   @Prop() color: string = '';
-
-  private onChange = () => {
-    if (!this.disabled) {
-      this.checked = true;
-    }
-  };
 
   render() {
     return (
@@ -33,10 +24,9 @@ export class DonutRadio {
           type="radio"
           name={this.name}
           value={this.value}
-          checked={this.checked}
+          defaultChecked={this.checked}
           disabled={this.disabled}
           color={this.color}
-          onChange={this.onChange}
         />
 
         <span class="control"></span>

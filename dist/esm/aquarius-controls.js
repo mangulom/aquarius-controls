@@ -1,5 +1,5 @@
-import { p as promiseResolve, b as bootstrapLazy } from './index-Da_QcrWP.js';
-export { s as setNonce } from './index-Da_QcrWP.js';
+import { p as promiseResolve, b as bootstrapLazy } from './index-BLFS0Zgx.js';
+export { s as setNonce } from './index-BLFS0Zgx.js';
 import { g as globalScripts } from './app-globals-DQuL1Twl.js';
 
 /*
@@ -17,5 +17,5 @@ var patchBrowser = () => {
 
 patchBrowser().then(async (options) => {
   await globalScripts();
-  return bootstrapLazy([["donut-radio",[[512,"donut-radio",{"name":[1],"value":[1],"label":[1],"checked":[1540],"disabled":[4],"color":[1]}]]],["general-button",[[512,"general-button",{"label":[1],"disabled":[4],"icon":[1],"color":[1]}]]],["hold-expand-button",[[512,"hold-expand-button",{"label":[1],"icon":[1],"disabled":[4],"color":[1],"holdTime":[2,"hold-time"],"expanded":[32]}]]],["navbar-footer",[[512,"navbar-footer",{"items":[16],"openIndex":[32]}]]],["navbar-horizontal",[[512,"navbar-horizontal",{"items":[16],"openIndex":[32]}]]]], options);
+  return bootstrapLazy([["donut-radio",[[512,"donut-radio",{"name":[1],"value":[1],"label":[1],"checked":[4],"disabled":[4],"color":[1]}]]],["general-button",[[512,"general-button",{"label":[1],"disabled":[4],"icon":[1],"color":[1]}]]],["hold-expand-button",[[512,"hold-expand-button",{"label":[1],"icon":[1],"disabled":[4],"color":[1],"holdTime":[2,"hold-time"],"expanded":[32]}]]],["navbar-footer",[[512,"navbar-footer",{"items":[16],"openIndex":[32]}]]],["navbar-horizontal",[[512,"navbar-horizontal",{"items":[16],"openIndex":[32]}]]]], options);
 });
