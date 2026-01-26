@@ -1,19 +1,26 @@
 'use strict';
 
-var index = require('./index-eni-syiK.js');
+var index = require('./index-DxKt8NA-.js');
 
-const tableGeneralCss = () => `:host{font-family:var(--app-font-family, Arial, sans-serif);display:block}.table-responsive{overflow-x:auto}.custom-table{width:100%;border-collapse:collapse}.custom-table thead tr{background-color:#f8f9fa}.custom-table th,.custom-table td{padding:12px 16px;text-align:left;cursor:pointer;border:1px solid #dee2e6;transition:background-color 0.2s ease}.custom-table tbody tr:nth-child(even){background-color:#f2f2f2}.custom-table tbody tr:hover{background-color:#e0e0e0}.th-primary{background-color:#0d6efd;color:white}.th-success{background-color:#198754;color:white}.th-danger{background-color:#dc3545;color:white}.th-warning{background-color:#ffc107;color:#212529}.th-info{background-color:#0dcaf0;color:#212529}.th-secondary{background-color:#6c757d;color:white}.th-dark{background-color:#212529;color:white}.th-light{background-color:#f8f9fa;color:#212529}`;
+const tableGeneralCss = () => `:host{font-family:var(--app-font-family, Arial, sans-serif);display:block}.table-responsive{overflow-x:auto;margin:1rem 0}.styled-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:0.5rem;overflow:hidden;box-shadow:0 0.25rem 0.5rem rgba(0,0,0,0.1)}.styled-table th,.styled-table td{padding:0.75rem 1rem;text-align:left;border-bottom:1px solid #dee2e6;transition:background-color 0.2s ease;cursor:pointer}.styled-table tbody tr:nth-child(even){background-color:#f8f9fa}.styled-table tbody tr:hover{background-color:#e9ecef}.styled-table thead tr th:first-child{border-top-left-radius:0.5rem}.styled-table thead tr th:last-child{border-top-right-radius:0.5rem}.th-primary{background-color:#0d6efd;color:white}.th-success{background-color:#198754;color:white}.th-danger{background-color:#dc3545;color:white}.th-warning{background-color:#ffc107;color:#212529}.th-info{background-color:#0dcaf0;color:#212529}.th-secondary{background-color:#6c757d;color:white}.th-dark{background-color:#212529;color:white}.th-light{background-color:#f8f9fa;color:#212529;border:1px solid #ced4da}.sort-indicator{margin-left:4px;font-size:0.75rem}`;
 
 const TableGeneral = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
-    /** Array de objetos a mostrar */
-    data = [];
     /** Columnas: { key: string, label: string, color?: TableColor } */
     columns = [];
+    /** Datos: arreglo de objetos, pasado desde la app consumidora */
+    data = [];
+    sortedData = [];
     sortKey = '';
     sortAsc = true;
+    watchData() {
+        this.sortedData = [...this.data];
+    }
+    componentWillLoad() {
+        this.sortedData = [...this.data];
+    }
     sortByColumn(key) {
         if (this.sortKey === key) {
             this.sortAsc = !this.sortAsc;
@@ -22,13 +29,13 @@ const TableGeneral = class {
             this.sortKey = key;
             this.sortAsc = true;
         }
-    }
-    getSortedData() {
-        if (!this.sortKey)
-            return this.data;
-        return [...this.data].sort((a, b) => {
-            const valA = a[this.sortKey];
-            const valB = b[this.sortKey];
+        this.sortedData = [...this.sortedData].sort((a, b) => {
+            const valA = a[key];
+            const valB = b[key];
+            if (valA == null)
+                return 1;
+            if (valB == null)
+                return -1;
             if (valA < valB)
                 return this.sortAsc ? -1 : 1;
             if (valA > valB)
@@ -37,9 +44,13 @@ const TableGeneral = class {
         });
     }
     render() {
-        const sortedData = this.getSortedData();
-        return (index.h("div", { key: '907c9c57adce07f3afc34f919e21326eaa3a1cf0', class: "table-responsive" }, index.h("table", { key: 'dee40dbdfd6e652642ab64604f6956573854bc8c', class: "custom-table" }, index.h("thead", { key: 'ad217f43640144d9b0ac89ba65eb057e3957296a' }, index.h("tr", { key: '690efe6fc6702976bf52058542ce1213be3b5640' }, this.columns.map(col => (index.h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (index.h("span", null, this.sortAsc ? ' ▲' : ' ▼'))))))), index.h("tbody", { key: '70f141d9cf69396330327436e76fe03f032d9741' }, sortedData.map(row => (index.h("tr", null, this.columns.map(col => (index.h("td", null, row[col.key]))))))))));
+        return (index.h("div", { key: '2177283a70edb93dd437ba3ac1cc351b283e547a', class: "table-responsive" }, index.h("table", { key: 'd9d8d12d76c05c5b0d745864812354fdd5db1493', class: "styled-table" }, index.h("thead", { key: '4e7ea6eb14d458dcd79bd4a00e6d877b4b8646b0' }, index.h("tr", { key: '17a6d0b26b163e30affedc819cde9defa7871638' }, this.columns.map(col => (index.h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (index.h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), index.h("tbody", { key: '8b8e60b3e15590bb33b1e185af33d38e745e2b19' }, this.sortedData.map(row => (index.h("tr", null, this.columns.map(col => (index.h("td", null, row[col.key]))))))))));
     }
+    static get watchers() { return {
+        "data": [{
+                "watchData": 0
+            }]
+    }; }
 };
 TableGeneral.style = tableGeneralCss();
 

@@ -83,7 +83,7 @@ export namespace Components {
          */
         "columns": { key: string, label: string, color?: TableColor }[];
         /**
-          * Array de objetos a mostrar
+          * Datos: arreglo de objetos, pasado desde la app consumidora
           * @default []
          */
         "data": any[];
@@ -207,7 +207,7 @@ declare namespace LocalJSX {
          */
         "columns"?: { key: string, label: string, color?: TableColor }[];
         /**
-          * Array de objetos a mostrar
+          * Datos: arreglo de objetos, pasado desde la app consumidora
           * @default []
          */
         "data"?: any[];

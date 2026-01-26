@@ -1,7 +1,5 @@
-'use strict';
-
 const NAMESPACE = 'aquarius-controls';
-const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: false, state: true, updatable: true};
+const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: true, state: true, updatable: true};
 
 /*
  Stencil Client Platform v4.41.2 | MIT Licensed | https://stenciljs.com
@@ -942,6 +940,7 @@ var setValue = (ref, propName, newVal, cmpMeta) => {
       `Couldn't find host element for "${cmpMeta.$tagName$}" as it is unknown to this Stencil runtime. This usually happens when integrating a 3rd party Stencil component with another Stencil component or application. Please reach out to the maintainers of the 3rd party Stencil component or report this on the Stencil Discord server (https://chat.stenciljs.com) or comment on this similar [GitHub issue](https://github.com/stenciljs/core/issues/5457).`
     );
   }
+  const elm = hostRef.$hostElement$ ;
   const oldVal = hostRef.$instanceValues$.get(propName);
   const flags = hostRef.$flags$;
   const instance = hostRef.$lazyInstance$ ;
@@ -952,6 +951,27 @@ var setValue = (ref, propName, newVal, cmpMeta) => {
   const didValueChange = newVal !== oldVal && !areBothNaN;
   if ((!(flags & 8 /* isConstructingInstance */) || oldVal === void 0) && didValueChange) {
     hostRef.$instanceValues$.set(propName, newVal);
+    if (cmpMeta.$watchers$) {
+      const watchMethods = cmpMeta.$watchers$[propName];
+      if (watchMethods) {
+        watchMethods.map((watcher) => {
+          try {
+            const [[watchMethodName, watcherFlags]] = Object.entries(watcher);
+            if (flags & 128 /* isWatchReady */ || watcherFlags & 1 /* Immediate */) {
+              if (!instance) {
+                hostRef.$fetchedCbList$.push(() => {
+                  hostRef.$lazyInstance$[watchMethodName](newVal, oldVal, propName);
+                });
+              } else {
+                instance[watchMethodName](newVal, oldVal, propName);
+              }
+            }
+          } catch (e) {
+            consoleError(e, elm);
+          }
+        });
+      }
+    }
     if ((flags & (2 /* hasRendered */ | 16 /* isQueuedForUpdate */)) === 2 /* hasRendered */) {
       if (instance.componentShouldUpdate) {
         if (instance.componentShouldUpdate(newVal, oldVal, propName) === false) {
@@ -968,6 +988,17 @@ var proxyComponent = (Cstr, cmpMeta, flags) => {
   var _a, _b;
   const prototype = Cstr.prototype;
   if (cmpMeta.$members$ || BUILD.propChangeCallback) {
+    {
+      if (Cstr.watchers && !cmpMeta.$watchers$) {
+        cmpMeta.$watchers$ = Cstr.watchers;
+      }
+      if (Cstr.deserializers && !cmpMeta.$deserializers$) {
+        cmpMeta.$deserializers$ = Cstr.deserializers;
+      }
+      if (Cstr.serializers && !cmpMeta.$serializers$) {
+        cmpMeta.$serializers$ = Cstr.serializers;
+      }
+    }
     const members = Object.entries((_a = cmpMeta.$members$) != null ? _a : {});
     members.map(([memberName, [memberFlags]]) => {
       if ((memberFlags & 31 /* Prop */ || (flags & 2 /* proxyState */) && memberFlags & 32 /* State */)) {
@@ -1117,6 +1148,11 @@ var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
         throw new Error(`Constructor for "${cmpMeta.$tagName$}#${hostRef.$modeName$}" was not found`);
       }
       if (!Cstr.isProxied) {
+        {
+          cmpMeta.$watchers$ = Cstr.watchers;
+          cmpMeta.$serializers$ = Cstr.serializers;
+          cmpMeta.$deserializers$ = Cstr.deserializers;
+        }
         proxyComponent(Cstr, cmpMeta, 2 /* proxyState */);
         Cstr.isProxied = true;
       }
@@ -1131,6 +1167,9 @@ var initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId) => {
       }
       {
         hostRef.$flags$ &= -9 /* isConstructingInstance */;
+      }
+      {
+        hostRef.$flags$ |= 128 /* isWatchReady */;
       }
       endNewInstance();
       {
@@ -1253,6 +1292,7 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
   plt.$resourcesUrl$ = new URL(options.resourcesUrl || "./", win.document.baseURI).href;
   lazyBundles.map((lazyBundle) => {
     lazyBundle[1].map((compactMeta) => {
+      var _a2, _b, _c;
       const cmpMeta = {
         $flags$: compactMeta[0],
         $tagName$: compactMeta[1],
@@ -1261,6 +1301,11 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
       };
       {
         cmpMeta.$members$ = compactMeta[2];
+      }
+      {
+        cmpMeta.$watchers$ = (_a2 = compactMeta[4]) != null ? _a2 : {};
+        cmpMeta.$serializers$ = (_b = compactMeta[5]) != null ? _b : {};
+        cmpMeta.$deserializers$ = (_c = compactMeta[6]) != null ? _c : {};
       }
       const tagName = transformTag(cmpMeta.$tagName$);
       const HostElement = class extends HTMLElement {
@@ -1366,9 +1411,4 @@ function transformTag(tag) {
   return tag;
 }
 
-exports.bootstrapLazy = bootstrapLazy;
-exports.getElement = getElement;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
-exports.setNonce = setNonce;
+export { bootstrapLazy as b, getElement as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
