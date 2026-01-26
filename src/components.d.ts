@@ -7,8 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
+import { TableColor } from "./components/tables/table-general.tsx/table-general";
 export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
+export { TableColor } from "./components/tables/table-general.tsx/table-general";
 export namespace Components {
     interface DonutRadio {
         /**
@@ -74,6 +76,18 @@ export namespace Components {
          */
         "items": NavbarItem1[];
     }
+    interface TableGeneral {
+        /**
+          * Columnas: { key: string, label: string, color?: TableColor }
+          * @default []
+         */
+        "columns": { key: string, label: string, color?: TableColor }[];
+        /**
+          * Array de objetos a mostrar
+          * @default []
+         */
+        "data": any[];
+    }
 }
 declare global {
     interface HTMLDonutRadioElement extends Components.DonutRadio, HTMLStencilElement {
@@ -106,12 +120,19 @@ declare global {
         prototype: HTMLNavbarHorizontalElement;
         new (): HTMLNavbarHorizontalElement;
     };
+    interface HTMLTableGeneralElement extends Components.TableGeneral, HTMLStencilElement {
+    }
+    var HTMLTableGeneralElement: {
+        prototype: HTMLTableGeneralElement;
+        new (): HTMLTableGeneralElement;
+    };
     interface HTMLElementTagNameMap {
         "donut-radio": HTMLDonutRadioElement;
         "general-button": HTMLGeneralButtonElement;
         "hold-expand-button": HTMLHoldExpandButtonElement;
         "navbar-footer": HTMLNavbarFooterElement;
         "navbar-horizontal": HTMLNavbarHorizontalElement;
+        "table-general": HTMLTableGeneralElement;
     }
 }
 declare namespace LocalJSX {
@@ -179,12 +200,25 @@ declare namespace LocalJSX {
          */
         "items"?: NavbarItem1[];
     }
+    interface TableGeneral {
+        /**
+          * Columnas: { key: string, label: string, color?: TableColor }
+          * @default []
+         */
+        "columns"?: { key: string, label: string, color?: TableColor }[];
+        /**
+          * Array de objetos a mostrar
+          * @default []
+         */
+        "data"?: any[];
+    }
     interface IntrinsicElements {
         "donut-radio": DonutRadio;
         "general-button": GeneralButton;
         "hold-expand-button": HoldExpandButton;
         "navbar-footer": NavbarFooter;
         "navbar-horizontal": NavbarHorizontal;
+        "table-general": TableGeneral;
     }
 }
 export { LocalJSX as JSX };
@@ -196,6 +230,7 @@ declare module "@stencil/core" {
             "hold-expand-button": LocalJSX.HoldExpandButton & JSXBase.HTMLAttributes<HTMLHoldExpandButtonElement>;
             "navbar-footer": LocalJSX.NavbarFooter & JSXBase.HTMLAttributes<HTMLNavbarFooterElement>;
             "navbar-horizontal": LocalJSX.NavbarHorizontal & JSXBase.HTMLAttributes<HTMLNavbarHorizontalElement>;
+            "table-general": LocalJSX.TableGeneral & JSXBase.HTMLAttributes<HTMLTableGeneralElement>;
         }
     }
 }
