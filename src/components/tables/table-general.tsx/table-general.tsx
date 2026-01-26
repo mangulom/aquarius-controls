@@ -1,4 +1,4 @@
-import { Component, Prop, h, State } from '@stencil/core';
+import { Component, Prop, h, State, Watch } from '@stencil/core';
 
 export type TableColor = 'PRIMARY' | 'SUCCESS' | 'DANGER' | 'WARNING' | 'INFO' | 'SECONDARY' | 'DARK' | 'LIGHT';
 
@@ -9,14 +9,24 @@ export type TableColor = 'PRIMARY' | 'SUCCESS' | 'DANGER' | 'WARNING' | 'INFO' |
 })
 export class TableGeneral {
 
-  /** Array de objetos a mostrar */
-  @Prop() data: any[] = [];
-
   /** Columnas: { key: string, label: string, color?: TableColor } */
   @Prop() columns: { key: string, label: string, color?: TableColor }[] = [];
 
+  /** Datos: arreglo de objetos, pasado desde la app consumidora */
+  @Prop() data: any[] = [];
+
+  @State() sortedData: any[] = [];
   @State() sortKey: string = '';
   @State() sortAsc: boolean = true;
+
+  @Watch('data')
+  watchData() {
+    this.sortedData = [...this.data];
+  }
+
+  componentWillLoad() {
+    this.sortedData = [...this.data];
+  }
 
   private sortByColumn(key: string) {
     if (this.sortKey === key) {
@@ -25,13 +35,12 @@ export class TableGeneral {
       this.sortKey = key;
       this.sortAsc = true;
     }
-  }
 
-  private getSortedData() {
-    if (!this.sortKey) return this.data;
-    return [...this.data].sort((a, b) => {
-      const valA = a[this.sortKey];
-      const valB = b[this.sortKey];
+    this.sortedData = [...this.sortedData].sort((a, b) => {
+      const valA = a[key];
+      const valB = b[key];
+      if (valA == null) return 1;
+      if (valB == null) return -1;
       if (valA < valB) return this.sortAsc ? -1 : 1;
       if (valA > valB) return this.sortAsc ? 1 : -1;
       return 0;
@@ -39,11 +48,9 @@ export class TableGeneral {
   }
 
   render() {
-    const sortedData = this.getSortedData();
-
     return (
       <div class="table-responsive">
-        <table class="custom-table">
+        <table class="styled-table">
           <thead>
             <tr>
               {this.columns.map(col => (
@@ -53,14 +60,14 @@ export class TableGeneral {
                 >
                   {col.label}
                   {this.sortKey === col.key && (
-                    <span>{this.sortAsc ? ' ▲' : ' ▼'}</span>
+                    <span class="sort-indicator">{this.sortAsc ? ' ▲' : ' ▼'}</span>
                   )}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {sortedData.map(row => (
+            {this.sortedData.map(row => (
               <tr>
                 {this.columns.map(col => (
                   <td>{row[col.key]}</td>
