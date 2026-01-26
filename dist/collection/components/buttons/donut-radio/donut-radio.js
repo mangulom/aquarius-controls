@@ -1,27 +1,68 @@
 import { h } from "@stencil/core";
-export class GeneralButton {
-    label = 'Aceptar';
+export class DonutRadio {
+    name;
+    value;
+    label = '';
+    checked = false;
     disabled = false;
-    icon = ''; // Clases de Font Awesome, ejemplo: "fas fa-user"
-    /** Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY */
-    color = 'PRIMARY';
+    color = '';
     render() {
-        const colorClass = `btn-${this.color.toLowerCase()}`; // btn-primary, btn-danger, etc.
-        return (h("button", { key: 'da3f890a46c1e4800fb63f8350c857225d2b3512', disabled: this.disabled, class: `general-button ${colorClass}` }, this.icon && h("i", { key: '49139511e0aa14a0ecf7df3eb428733aa8ff3a0c', class: this.icon }), h("span", { key: '70d91300e28cf19cc93a1655bb8a189a228ad3c0' }, this.label)));
+        return (h("label", { key: '7ae155c6e2d4b1cac9dec98ce284b8624edb652a', class: {
+                'donut-radio': true,
+                'disabled': this.disabled
+            } }, h("input", { key: 'fe9c642ab93129ceab9fd8b2d0994b0f4b0b17f2', type: "radio", name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, color: this.color }), h("span", { key: '9136821124c2e562f4f31d41983d65fdb5f6c74a', class: "control" }), this.label && h("span", { key: 'b6cd49d5dc0caa016055e812a4aedfb452ed1b60', class: "text" }, this.label)));
     }
-    static get is() { return "general-button"; }
+    static get is() { return "donut-radio"; }
     static get originalStyleUrls() {
         return {
-            "$": ["general-button.css"]
+            "$": ["donut-radio.css"]
         };
     }
     static get styleUrls() {
         return {
-            "$": ["general-button.css"]
+            "$": ["donut-radio.css"]
         };
     }
     static get properties() {
         return {
+            "name": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": true,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "name"
+            },
+            "value": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": true,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "value"
+            },
             "label": {
                 "type": "string",
                 "mutable": false,
@@ -40,7 +81,27 @@ export class GeneralButton {
                 "setter": false,
                 "reflect": false,
                 "attribute": "label",
-                "defaultValue": "'Aceptar'"
+                "defaultValue": "''"
+            },
+            "checked": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "checked",
+                "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
@@ -62,7 +123,7 @@ export class GeneralButton {
                 "attribute": "disabled",
                 "defaultValue": "false"
             },
-            "icon": {
+            "color": {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
@@ -79,28 +140,8 @@ export class GeneralButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "icon",
-                "defaultValue": "''"
-            },
-            "color": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": "Color del bot\u00F3n: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY"
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
                 "attribute": "color",
-                "defaultValue": "'PRIMARY'"
+                "defaultValue": "''"
             }
         };
     }

@@ -10,6 +10,26 @@ import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizonta
 export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
 export namespace Components {
+    interface DonutRadio {
+        /**
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * @default ''
+         */
+        "color": string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        "name": string;
+        "value": string;
+    }
     interface GeneralButton {
         /**
           * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
@@ -68,6 +88,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDonutRadioElement extends Components.DonutRadio, HTMLStencilElement {
+    }
+    var HTMLDonutRadioElement: {
+        prototype: HTMLDonutRadioElement;
+        new (): HTMLDonutRadioElement;
+    };
     interface HTMLGeneralButtonElement extends Components.GeneralButton, HTMLStencilElement {
     }
     var HTMLGeneralButtonElement: {
@@ -93,6 +119,7 @@ declare global {
         new (): HTMLNavbarHorizontalElement;
     };
     interface HTMLElementTagNameMap {
+        "donut-radio": HTMLDonutRadioElement;
         "general-button": HTMLGeneralButtonElement;
         "hold-expand-button": HTMLHoldExpandButtonElement;
         "navbar-footer": HTMLNavbarFooterElement;
@@ -100,6 +127,26 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface DonutRadio {
+        /**
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * @default ''
+         */
+        "color"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        "name": string;
+        "value": string;
+    }
     interface GeneralButton {
         /**
           * Color del botón: PRIMARY, DANGER, WARNING, SUCCESS, INFO, SECONDARY
@@ -157,6 +204,7 @@ declare namespace LocalJSX {
         "items"?: NavbarItem1[];
     }
     interface IntrinsicElements {
+        "donut-radio": DonutRadio;
         "general-button": GeneralButton;
         "hold-expand-button": HoldExpandButton;
         "navbar-footer": NavbarFooter;
@@ -167,6 +215,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "donut-radio": LocalJSX.DonutRadio & JSXBase.HTMLAttributes<HTMLDonutRadioElement>;
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
             "hold-expand-button": LocalJSX.HoldExpandButton & JSXBase.HTMLAttributes<HTMLHoldExpandButtonElement>;
             "navbar-footer": LocalJSX.NavbarFooter & JSXBase.HTMLAttributes<HTMLNavbarFooterElement>;

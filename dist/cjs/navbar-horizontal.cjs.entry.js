@@ -15,7 +15,7 @@ const NavbarHorizontal = class {
         this.openIndex = this.openIndex === index ? null : index;
     }
     render() {
-        return (index.h("nav", { key: '5e7fef785ad05329c45d8a1e6e688ea2e6edc334', class: "navbar" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && this.openIndex === index$1 && (index.h("div", { class: "subitems" }, item.subitems.map(sub => (index.h("button", { class: "subitem" }, sub.icon && index.h("i", { class: sub.icon }), index.h("span", null, sub.label)))))))))));
+        return (index.h("nav", { key: 'ed0285175ffc17e52959e29df105076be5ab31f5', class: "navbar" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && this.openIndex === index$1 && (index.h("div", { class: "subitems" }, item.subitems.map(sub => (index.h("button", { class: "subitem" }, sub.icon && index.h("i", { class: sub.icon }), index.h("span", null, sub.label)))))))))));
     }
 };
 NavbarHorizontal.style = navbarHorizontalCss();

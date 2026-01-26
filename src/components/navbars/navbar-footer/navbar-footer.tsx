@@ -49,10 +49,6 @@ export class NavbarFooter {
             </div>
           ))}
         </div>
-
-        <div class="footer-text">
-          REGINA BILLING - Powered by Aquarius Consulting S.A. - Todos los Derechos Reservados ® 2026
-        </div>
       </footer>
     );
   }

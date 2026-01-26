@@ -9,7 +9,7 @@ export class NavbarFooter {
         return (h("footer", { key: 'a926e955edad51d274d2c544481588e0e0571498', class: "navbar-footer" }, h("div", { key: '52c44c9b62a37a9160798d76ee71588b0a7ddfce', class: "navbar-buttons" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && (h("div", { class: {
                 'subitems-container': true,
                 'open': this.openIndex === index
-            } }, item.subitems.map(sub => (h("button", { class: "subitem" }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label)))))))))), h("div", { key: 'e9c94c25ff623a5c881522686415859ab01d7c46', class: "footer-text" }, "REGINA BILLING - Powered by Aquarius Consulting S.A. - Todos los Derechos Reservados \u00AE 2026")));
+            } }, item.subitems.map(sub => (h("button", { class: "subitem" }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label))))))))))));
     }
     static get is() { return "navbar-footer"; }
     static get originalStyleUrls() {
