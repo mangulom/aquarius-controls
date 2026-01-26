@@ -7,10 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
-import { TableColor } from "./components/tables/table-general.tsx/table-general";
 export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
-export { TableColor } from "./components/tables/table-general.tsx/table-general";
 export namespace Components {
     interface DonutRadio {
         /**
@@ -78,15 +76,15 @@ export namespace Components {
     }
     interface TableGeneral {
         /**
-          * Columnas: { key: string, label: string, color?: TableColor }
+          * Columnas: { key: string, label: string, color }
           * @default []
          */
-        "columns": { key: string, label: string, color?: TableColor }[];
+        "columns": any[] | string;
         /**
-          * Datos: arreglo de objetos, pasado desde la app consumidora
+          * Datos: arreglo de objetos
           * @default []
          */
-        "data": any[];
+        "data": any[] | string;
     }
 }
 declare global {
@@ -202,15 +200,15 @@ declare namespace LocalJSX {
     }
     interface TableGeneral {
         /**
-          * Columnas: { key: string, label: string, color?: TableColor }
+          * Columnas: { key: string, label: string, color }
           * @default []
          */
-        "columns"?: { key: string, label: string, color?: TableColor }[];
+        "columns"?: any[] | string;
         /**
-          * Datos: arreglo de objetos, pasado desde la app consumidora
+          * Datos: arreglo de objetos
           * @default []
          */
-        "data"?: any[];
+        "data"?: any[] | string;
     }
     interface IntrinsicElements {
         "donut-radio": DonutRadio;

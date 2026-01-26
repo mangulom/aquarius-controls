@@ -21,7 +21,7 @@ const DonutRadio = class {
         this.checked = true;
     };
     render() {
-        return (h("label", { key: '0c846b7790877b310e1f81c87be20b6e55cef3cd', class: "radio" }, h("input", { key: 'd7c8757409a29a5c77972168c8c1df96c1a4a0d9', type: "radio", checked: this.checked, onClick: this.onClick, color: this.color }), h("span", { key: 'db2d125ef8d471e4eccff5ed753cc15ffd929e73', class: "control" }), h("span", { key: '1a6a48c414a8f7b01e3b738775ceff0e971ca8d0', class: "label" }, this.label)));
+        return (h("label", { key: '7a7f1f283579e7be9fbf7e43f0cd889da337389c', class: "radio" }, h("input", { key: '205c93ca051526cb90b8085afdaf3c5ce6d0bb18', type: "radio", checked: this.checked, onClick: this.onClick, color: this.color }), h("span", { key: '8609236ae2c3ab85e7026695a4a8b06bdce99658', class: "control" }), h("span", { key: '0d48b6aee5ec8708dbb0e26b23a4ce3aa6987e40', class: "label" }, this.label)));
     }
 };
 DonutRadio.style = donutRadioCss();

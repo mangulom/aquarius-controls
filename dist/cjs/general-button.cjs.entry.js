@@ -15,7 +15,7 @@ const GeneralButton = class {
     color = 'PRIMARY';
     render() {
         const colorClass = `btn-${this.color.toLowerCase()}`; // btn-primary, btn-danger, etc.
-        return (index.h("button", { key: '62ee89ee3449aaa95d420d8a167962c5b34b9318', disabled: this.disabled, class: `general-button ${colorClass}` }, this.icon && index.h("i", { key: '8038a3e5166843712350a48529c4988ddc6d4132', class: this.icon }), index.h("span", { key: '5c7b9aff375d3ed5496655217408de41d824da38' }, this.label)));
+        return (index.h("button", { key: 'da3f890a46c1e4800fb63f8350c857225d2b3512', disabled: this.disabled, class: `general-button ${colorClass}` }, this.icon && index.h("i", { key: '49139511e0aa14a0ecf7df3eb428733aa8ff3a0c', class: this.icon }), index.h("span", { key: '70d91300e28cf19cc93a1655bb8a189a228ad3c0' }, this.label)));
     }
 };
 GeneralButton.style = generalButtonCss();

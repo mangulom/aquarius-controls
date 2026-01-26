@@ -8,18 +8,31 @@ const TableGeneral = class {
     constructor(hostRef) {
         index.registerInstance(this, hostRef);
     }
-    /** Columnas: { key: string, label: string, color?: TableColor } */
+    /** Columnas: { key: string, label: string, color } */
     columns = [];
-    /** Datos: arreglo de objetos, pasado desde la app consumidora */
+    /** Datos: arreglo de objetos */
     data = [];
     sortedData = [];
     sortKey = '';
     sortAsc = true;
-    watchData() {
-        this.sortedData = [...this.data];
+    /** Convierte strings JSON a arrays reales */
+    parseProp(prop) {
+        if (typeof prop === 'string') {
+            try {
+                return JSON.parse(prop);
+            }
+            catch {
+                return [];
+            }
+        }
+        return prop || [];
+    }
+    watchProps() {
+        this.sortedData = this.parseProp(this.data);
     }
     componentWillLoad() {
-        this.sortedData = [...this.data];
+        this.columns = this.parseProp(this.columns);
+        this.sortedData = this.parseProp(this.data);
     }
     sortByColumn(key) {
         if (this.sortKey === key) {
@@ -29,7 +42,8 @@ const TableGeneral = class {
             this.sortKey = key;
             this.sortAsc = true;
         }
-        this.sortedData = [...this.sortedData].sort((a, b) => {
+        const dataArr = this.parseProp(this.data);
+        this.sortedData = [...dataArr].sort((a, b) => {
             const valA = a[key];
             const valB = b[key];
             if (valA == null)
@@ -44,11 +58,15 @@ const TableGeneral = class {
         });
     }
     render() {
-        return (index.h("div", { key: '2177283a70edb93dd437ba3ac1cc351b283e547a', class: "table-responsive" }, index.h("table", { key: 'd9d8d12d76c05c5b0d745864812354fdd5db1493', class: "styled-table" }, index.h("thead", { key: '4e7ea6eb14d458dcd79bd4a00e6d877b4b8646b0' }, index.h("tr", { key: '17a6d0b26b163e30affedc819cde9defa7871638' }, this.columns.map(col => (index.h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (index.h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), index.h("tbody", { key: '8b8e60b3e15590bb33b1e185af33d38e745e2b19' }, this.sortedData.map(row => (index.h("tr", null, this.columns.map(col => (index.h("td", null, row[col.key]))))))))));
+        const columnsArr = this.parseProp(this.columns);
+        return (index.h("div", { key: '1fdc7ca1222cd4903606d233cdc07a7ec4c5d78b', class: "table-responsive" }, index.h("table", { key: 'd81fa2c21f669c1f552d3e3b05a2996ffdd8bb43', class: "styled-table" }, index.h("thead", { key: '06342516323fe5d091eb595f657d28b0bd31e5a8' }, index.h("tr", { key: 'c4a4f4c6d4e625bbe9e1012541c4dba234085a2e' }, columnsArr.map(col => (index.h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (index.h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), index.h("tbody", { key: '84592feecf6c07a11b0b2145a476cc8aea4ee31e' }, this.sortedData.map(row => (index.h("tr", null, columnsArr.map(col => (index.h("td", null, row[col.key]))))))))));
     }
     static get watchers() { return {
         "data": [{
-                "watchData": 0
+                "watchProps": 0
+            }],
+        "columns": [{
+                "watchProps": 0
             }]
     }; }
 };

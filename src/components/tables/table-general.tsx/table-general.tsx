@@ -5,27 +5,37 @@ export type TableColor = 'PRIMARY' | 'SUCCESS' | 'DANGER' | 'WARNING' | 'INFO' |
 @Component({
   tag: 'table-general',
   styleUrl: 'table-general.css',
-  shadow: false,
+  shadow: false
 })
 export class TableGeneral {
 
-  /** Columnas: { key: string, label: string, color?: TableColor } */
-  @Prop() columns: { key: string, label: string, color?: TableColor }[] = [];
+  /** Columnas: { key: string, label: string, color } */
+  @Prop() columns: any[] | string = [];  
 
-  /** Datos: arreglo de objetos, pasado desde la app consumidora */
-  @Prop() data: any[] = [];
+  /** Datos: arreglo de objetos */
+  @Prop() data: any[] | string = [];  
 
   @State() sortedData: any[] = [];
   @State() sortKey: string = '';
   @State() sortAsc: boolean = true;
 
+  /** Convierte strings JSON a arrays reales */
+  private parseProp(prop: any): any[] {
+    if (typeof prop === 'string') {
+      try { return JSON.parse(prop); } catch { return []; }
+    }
+    return prop || [];
+  }
+
   @Watch('data')
-  watchData() {
-    this.sortedData = [...this.data];
+  @Watch('columns')
+  watchProps() {
+    this.sortedData = this.parseProp(this.data);
   }
 
   componentWillLoad() {
-    this.sortedData = [...this.data];
+    this.columns = this.parseProp(this.columns);
+    this.sortedData = this.parseProp(this.data);
   }
 
   private sortByColumn(key: string) {
@@ -36,7 +46,9 @@ export class TableGeneral {
       this.sortAsc = true;
     }
 
-    this.sortedData = [...this.sortedData].sort((a, b) => {
+    const dataArr = this.parseProp(this.data);
+
+    this.sortedData = [...dataArr].sort((a, b) => {
       const valA = a[key];
       const valB = b[key];
       if (valA == null) return 1;
@@ -48,12 +60,13 @@ export class TableGeneral {
   }
 
   render() {
+    const columnsArr = this.parseProp(this.columns);
     return (
       <div class="table-responsive">
         <table class="styled-table">
           <thead>
             <tr>
-              {this.columns.map(col => (
+              {columnsArr.map(col => (
                 <th
                   class={col.color ? `th-${col.color.toLowerCase()}` : ''}
                   onClick={() => this.sortByColumn(col.key)}
@@ -69,7 +82,7 @@ export class TableGeneral {
           <tbody>
             {this.sortedData.map(row => (
               <tr>
-                {this.columns.map(col => (
+                {columnsArr.map(col => (
                   <td>{row[col.key]}</td>
                 ))}
               </tr>

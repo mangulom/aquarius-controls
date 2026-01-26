@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                  | Type                                                    | Default |
-| --------- | --------- | ------------------------------------------------------------ | ------------------------------------------------------- | ------- |
-| `columns` | --        | Columnas: { key: string, label: string, color?: TableColor } | `{ key: string; label: string; color?: TableColor; }[]` | `[]`    |
-| `data`    | --        | Datos: arreglo de objetos, pasado desde la app consumidora   | `any[]`                                                 | `[]`    |
+| Property  | Attribute | Description                                     | Type              | Default |
+| --------- | --------- | ----------------------------------------------- | ----------------- | ------- |
+| `columns` | `columns` | Columnas: { key: string, label: string, color } | `any[] \| string` | `[]`    |
+| `data`    | `data`    | Datos: arreglo de objetos                       | `any[] \| string` | `[]`    |
 
 
 ----------------------------------------------

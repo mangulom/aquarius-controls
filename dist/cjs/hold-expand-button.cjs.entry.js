@@ -30,7 +30,7 @@ const HoldExpandButton = class {
     };
     render() {
         const colorClass = `btn-${this.color.toLowerCase()}`;
-        return (index.h("button", { key: '8fe8627160eb1279f81b7bbaefc5a7b0140de50b', disabled: this.disabled, class: `hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, index.h("div", { key: '524a5519deb8d6546de2d9c64075d6cbcb4e7c55', class: "center" }, this.icon && index.h("i", { key: 'e255168c7dd22f1fbe2e0bb565618f2bb590c352', class: this.icon }), index.h("span", { key: 'b790f16935fedb7ce9dafb9558fd655d3e540de8', class: "label" }, this.label))));
+        return (index.h("button", { key: '9c0899837e15c67febdd38a7f0fe531330a234e3', disabled: this.disabled, class: `hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, index.h("div", { key: 'e0643dd27fbdca5fb189c901ee543b0ebb508800', class: "center" }, this.icon && index.h("i", { key: '26493977548fdee6ddaa82903236c621d2dcd753', class: this.icon }), index.h("span", { key: '9e2466867093af9120c9bf35619355427a18beb7', class: "label" }, this.label))));
     }
 };
 HoldExpandButton.style = holdExpandButtonCss();
