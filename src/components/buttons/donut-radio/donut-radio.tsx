@@ -1,37 +1,43 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Element, State } from '@stencil/core';
 
 @Component({
   tag: 'donut-radio',
   styleUrl: 'donut-radio.css',
-  shadow: false
+  shadow: true,
 })
 export class DonutRadio {
+  @Element() el!: HTMLElement;
 
   @Prop() name!: string;
-  @Prop() value!: string;
-  @Prop() label: string = '';
-  @Prop() checked: boolean = false;
-  @Prop() disabled: boolean = false;
-  @Prop() color: string = '';
+  @Prop() label!: string;
+  @Prop() color: string = 'PRIMARY';
+
+  @State() checked = false;
+
+  private onClick = () => {
+    const group = document.querySelectorAll(`donut-radio[name="${this.name}"]`);
+
+    group.forEach((radio: any) => {
+      if (radio !== this.el) {
+        radio.checked = false;
+      }
+    });
+
+    this.checked = true;
+  };
 
   render() {
     return (
-      <label class={{
-        'donut-radio': true,
-        'disabled': this.disabled
-      }}>
+      <label class="radio">
         <input
           type="radio"
-          name={this.name}
-          value={this.value}
-          defaultChecked={this.checked}
-          disabled={this.disabled}
+          checked={this.checked}
+          onClick={this.onClick}
           color={this.color}
         />
 
         <span class="control"></span>
-
-        {this.label && <span class="text">{this.label}</span>}
+        <span class="label">{this.label}</span>
       </label>
     );
   }

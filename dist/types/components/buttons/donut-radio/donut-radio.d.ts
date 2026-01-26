@@ -1,9 +1,9 @@
 export declare class DonutRadio {
+    el: HTMLElement;
     name: string;
-    value: string;
     label: string;
-    checked: boolean;
-    disabled: boolean;
     color: string;
+    checked: boolean;
+    private onClick;
     render(): any;
 }

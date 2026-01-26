@@ -1,18 +1,24 @@
 import { h } from "@stencil/core";
 export class DonutRadio {
+    el;
     name;
-    value;
-    label = '';
+    label;
+    color = 'PRIMARY';
     checked = false;
-    disabled = false;
-    color = '';
+    onClick = () => {
+        const group = document.querySelectorAll(`donut-radio[name="${this.name}"]`);
+        group.forEach((radio) => {
+            if (radio !== this.el) {
+                radio.checked = false;
+            }
+        });
+        this.checked = true;
+    };
     render() {
-        return (h("label", { key: '7ae155c6e2d4b1cac9dec98ce284b8624edb652a', class: {
-                'donut-radio': true,
-                'disabled': this.disabled
-            } }, h("input", { key: 'e15efba402243fb42c303e06144e99d960dcc517', type: "radio", name: this.name, value: this.value, defaultChecked: this.checked, disabled: this.disabled, color: this.color }), h("span", { key: 'f39152a4b5fa613765fd925e5c3fd2530e90649f', class: "control" }), this.label && h("span", { key: '153aaf89dedd23708be7df968dffd7490431b415', class: "text" }, this.label)));
+        return (h("label", { key: '7a7f1f283579e7be9fbf7e43f0cd889da337389c', class: "radio" }, h("input", { key: '205c93ca051526cb90b8085afdaf3c5ce6d0bb18', type: "radio", checked: this.checked, onClick: this.onClick, color: this.color }), h("span", { key: '8609236ae2c3ab85e7026695a4a8b06bdce99658', class: "control" }), h("span", { key: '0d48b6aee5ec8708dbb0e26b23a4ce3aa6987e40', class: "label" }, this.label)));
     }
     static get is() { return "donut-radio"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["donut-radio.css"]
@@ -44,7 +50,7 @@ export class DonutRadio {
                 "reflect": false,
                 "attribute": "name"
             },
-            "value": {
+            "label": {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
@@ -61,67 +67,7 @@ export class DonutRadio {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "value"
-            },
-            "label": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": ""
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "label",
-                "defaultValue": "''"
-            },
-            "checked": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": ""
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "checked",
-                "defaultValue": "false"
-            },
-            "disabled": {
-                "type": "boolean",
-                "mutable": false,
-                "complexType": {
-                    "original": "boolean",
-                    "resolved": "boolean",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": ""
-                },
-                "getter": false,
-                "setter": false,
-                "reflect": false,
-                "attribute": "disabled",
-                "defaultValue": "false"
+                "attribute": "label"
             },
             "color": {
                 "type": "string",
@@ -141,8 +87,14 @@ export class DonutRadio {
                 "setter": false,
                 "reflect": false,
                 "attribute": "color",
-                "defaultValue": "''"
+                "defaultValue": "'PRIMARY'"
             }
         };
     }
+    static get states() {
+        return {
+            "checked": {}
+        };
+    }
+    static get elementRef() { return "el"; }
 }

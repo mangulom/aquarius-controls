@@ -7,14 +7,11 @@
 
 ## Properties
 
-| Property             | Attribute  | Description | Type      | Default     |
-| -------------------- | ---------- | ----------- | --------- | ----------- |
-| `checked`            | `checked`  |             | `boolean` | `false`     |
-| `color`              | `color`    |             | `string`  | `''`        |
-| `disabled`           | `disabled` |             | `boolean` | `false`     |
-| `label`              | `label`    |             | `string`  | `''`        |
-| `name` _(required)_  | `name`     |             | `string`  | `undefined` |
-| `value` _(required)_ | `value`    |             | `string`  | `undefined` |
+| Property             | Attribute | Description | Type     | Default     |
+| -------------------- | --------- | ----------- | -------- | ----------- |
+| `color`              | `color`   |             | `string` | `'PRIMARY'` |
+| `label` _(required)_ | `label`   |             | `string` | `undefined` |
+| `name` _(required)_  | `name`    |             | `string` | `undefined` |
 
 
 ----------------------------------------------

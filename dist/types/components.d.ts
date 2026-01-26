@@ -12,23 +12,11 @@ export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizonta
 export namespace Components {
     interface DonutRadio {
         /**
-          * @default false
-         */
-        "checked": boolean;
-        /**
-          * @default ''
+          * @default 'PRIMARY'
          */
         "color": string;
-        /**
-          * @default false
-         */
-        "disabled": boolean;
-        /**
-          * @default ''
-         */
         "label": string;
         "name": string;
-        "value": string;
     }
     interface GeneralButton {
         /**
@@ -129,23 +117,11 @@ declare global {
 declare namespace LocalJSX {
     interface DonutRadio {
         /**
-          * @default false
-         */
-        "checked"?: boolean;
-        /**
-          * @default ''
+          * @default 'PRIMARY'
          */
         "color"?: string;
-        /**
-          * @default false
-         */
-        "disabled"?: boolean;
-        /**
-          * @default ''
-         */
-        "label"?: string;
+        "label": string;
         "name": string;
-        "value": string;
     }
     interface GeneralButton {
         /**
