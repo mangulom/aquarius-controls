@@ -6,11 +6,16 @@ export class DonutRadio {
     checked = false;
     disabled = false;
     color = '';
+    onChange = () => {
+        if (!this.disabled) {
+            this.checked = true;
+        }
+    };
     render() {
-        return (h("label", { key: '7ae155c6e2d4b1cac9dec98ce284b8624edb652a', class: {
+        return (h("label", { key: 'ccefbe8550f028da213cecee7164354cc1aa022f', class: {
                 'donut-radio': true,
                 'disabled': this.disabled
-            } }, h("input", { key: 'fe9c642ab93129ceab9fd8b2d0994b0f4b0b17f2', type: "radio", name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, color: this.color }), h("span", { key: '9136821124c2e562f4f31d41983d65fdb5f6c74a', class: "control" }), this.label && h("span", { key: 'b6cd49d5dc0caa016055e812a4aedfb452ed1b60', class: "text" }, this.label)));
+            } }, h("input", { key: 'ae29aa854a441d28826e49cfb87eb5bc9f75d95a', type: "radio", name: this.name, value: this.value, checked: this.checked, disabled: this.disabled, color: this.color, onChange: this.onChange }), h("span", { key: '1ad5badc2eb135f8200bb63f7d5891c6d7b163b3', class: "control" }), this.label && h("span", { key: '3c4a49673ed508acb35311229754183bb2e658d9', class: "text" }, this.label)));
     }
     static get is() { return "donut-radio"; }
     static get originalStyleUrls() {
@@ -85,7 +90,7 @@ export class DonutRadio {
             },
             "checked": {
                 "type": "boolean",
-                "mutable": false,
+                "mutable": true,
                 "complexType": {
                     "original": "boolean",
                     "resolved": "boolean",
@@ -99,7 +104,7 @@ export class DonutRadio {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false,
+                "reflect": true,
                 "attribute": "checked",
                 "defaultValue": "false"
             },

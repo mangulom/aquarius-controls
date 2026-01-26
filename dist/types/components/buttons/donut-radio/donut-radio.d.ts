@@ -5,5 +5,6 @@ export declare class DonutRadio {
     checked: boolean;
     disabled: boolean;
     color: string;
+    private onChange;
     render(): any;
 }
