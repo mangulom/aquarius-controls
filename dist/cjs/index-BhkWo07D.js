@@ -1,3 +1,5 @@
+'use strict';
+
 const NAMESPACE = 'aquarius-controls';
 const BUILD = /* aquarius-controls */ { hotModuleReplacement: false, hydratedSelectorName: "hydrated", lazyLoad: true, propChangeCallback: true, state: true, updatable: true};
 
@@ -429,21 +431,6 @@ var parsePropertyValue = (propValue, propType, isFormAssociated) => {
 var getElement = (ref) => {
   var _a;
   return (_a = getHostRef(ref)) == null ? void 0 : _a.$hostElement$ ;
-};
-
-// src/runtime/event-emitter.ts
-var createEvent = (ref, name, flags) => {
-  const elm = getElement(ref);
-  return {
-    emit: (detail) => {
-      return emitEvent(elm, name, {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail
-      });
-    }
-  };
 };
 var emitEvent = (elm, name, opts) => {
   const ev = plt.ce(name, opts);
@@ -1476,4 +1463,9 @@ function transformTag(tag) {
   return tag;
 }
 
-export { bootstrapLazy as b, createEvent as c, getElement as g, h, promiseResolve as p, registerInstance as r, setNonce as s };
+exports.bootstrapLazy = bootstrapLazy;
+exports.getElement = getElement;
+exports.h = h;
+exports.promiseResolve = promiseResolve;
+exports.registerInstance = registerInstance;
+exports.setNonce = setNonce;

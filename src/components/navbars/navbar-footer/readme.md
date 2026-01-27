@@ -12,13 +12,6 @@
 | `items`  | --        |             | `NavbarItem[]` | `[]`    |
 
 
-## Events
-
-| Event      | Description | Type                  |
-| ---------- | ----------- | --------------------- |
-| `navigate` |             | `CustomEvent<string>` |
-
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

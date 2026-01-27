@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-DJCOPe7o.js';
+import { r as registerInstance, h } from './index-DY1aVQBJ.js';
 
 const cardGeneralCss = () => `:host{display:block;width:100%;box-sizing:border-box;--card-primary-color:rgba(13, 110, 253, 0.15);--card-border-color:rgba(13, 110, 253, 0.5);--card-shadow-color:rgba(0, 0, 0, 0.15)}:host .card{width:100%;height:100%;min-height:80px;padding:12px;box-sizing:border-box;border-radius:16px;border:3px solid var(--card-border-color);background:var(--card-primary-color);box-shadow:0 6px 12px var(--card-shadow-color);transition:transform 0.2s ease,      box-shadow 0.2s ease}:host .card:hover{transform:translateY(-2px);box-shadow:0 10px 18px var(--card-shadow-color)}:host .card-inner{width:100%;height:100%;background:rgba(255, 255, 255, 0.9);border-radius:12px;padding:16px;box-sizing:border-box}@media (max-width: 768px){:host .card{padding:8px;border-radius:12px}:host .card-inner{padding:12px}}`;
 

@@ -99,10 +99,6 @@ export namespace Components {
         "data": any[] | string;
     }
 }
-export interface NavbarFooterCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLNavbarFooterElement;
-}
 declare global {
     interface HTMLCardGeneralElement extends Components.CardGeneral, HTMLStencilElement {
     }
@@ -128,18 +124,7 @@ declare global {
         prototype: HTMLHoldExpandButtonElement;
         new (): HTMLHoldExpandButtonElement;
     };
-    interface HTMLNavbarFooterElementEventMap {
-        "navigate": string;
-    }
     interface HTMLNavbarFooterElement extends Components.NavbarFooter, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLNavbarFooterElementEventMap>(type: K, listener: (this: HTMLNavbarFooterElement, ev: NavbarFooterCustomEvent<HTMLNavbarFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLNavbarFooterElementEventMap>(type: K, listener: (this: HTMLNavbarFooterElement, ev: NavbarFooterCustomEvent<HTMLNavbarFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLNavbarFooterElement: {
         prototype: HTMLNavbarFooterElement;
@@ -236,7 +221,6 @@ declare namespace LocalJSX {
           * @default []
          */
         "items"?: NavbarItem[];
-        "onNavigate"?: (event: NavbarFooterCustomEvent<string>) => void;
     }
     interface NavbarHorizontal {
         /**

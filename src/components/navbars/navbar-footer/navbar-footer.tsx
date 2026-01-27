@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, h, State } from '@stencil/core';
 
 export interface NavbarItem {
   label: string;
@@ -13,22 +13,30 @@ export interface NavbarItem {
   shadow: false
 })
 export class NavbarFooter {
-
   @Prop() items: NavbarItem[] = [];
   @State() openIndex: number | null = null;
-
-  // Evento custom
-  @Event({ bubbles: true, composed: true }) navigate: EventEmitter<string>;
 
   toggleDropdown(index: number) {
     this.openIndex = this.openIndex === index ? null : index;
   }
 
   handleClick(event: MouseEvent, route?: string) {
-    event.stopPropagation(); // Evita que se cierre el dropdown al hacer click
+    event.stopPropagation();
     if (route) {
-      this.navigate.emit(route); // Emitir la ruta
+      console.log('Emit route:', route);
+      // Emite evento nativo del DOM
+      this.el.dispatchEvent(new CustomEvent('navigate', {
+        detail: route,
+        bubbles: true,
+        composed: true
+      }));
     }
+  }
+
+  private el!: HTMLElement;
+
+  connectedCallback() {
+    this.el = this as unknown as HTMLElement;
   }
 
   render() {

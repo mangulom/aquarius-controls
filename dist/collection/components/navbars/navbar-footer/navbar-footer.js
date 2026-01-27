@@ -2,19 +2,27 @@ import { h } from "@stencil/core";
 export class NavbarFooter {
     items = [];
     openIndex = null;
-    // Evento custom
-    navigate;
     toggleDropdown(index) {
         this.openIndex = this.openIndex === index ? null : index;
     }
     handleClick(event, route) {
-        event.stopPropagation(); // Evita que se cierre el dropdown al hacer click
+        event.stopPropagation();
         if (route) {
-            this.navigate.emit(route); // Emitir la ruta
+            console.log('Emit route:', route);
+            // Emite evento nativo del DOM
+            this.el.dispatchEvent(new CustomEvent('navigate', {
+                detail: route,
+                bubbles: true,
+                composed: true
+            }));
         }
     }
+    el;
+    connectedCallback() {
+        this.el = this;
+    }
     render() {
-        return (h("footer", { key: 'ec1c509c3f23578954df5e69c288e8c496c125e2', class: "navbar-footer" }, h("div", { key: '171cabaa84043fcbf6a4c7aa0919a58b2c0b2ae6', class: "navbar-buttons" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: (event) => item.route ? this.handleClick(event, item.route) : this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && (h("div", { class: {
+        return (h("footer", { key: 'b465a034edb9adddb716a95e67120af1ab400a78', class: "navbar-footer" }, h("div", { key: 'd105ca4fd8e14f9ddf078971749a6d12d855417a', class: "navbar-buttons" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: (event) => item.route ? this.handleClick(event, item.route) : this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && (h("div", { class: {
                 'subitems-container': true,
                 'open': this.openIndex === index
             } }, item.subitems.map(sub => (h("button", { class: "subitem", onClick: (event) => this.handleClick(event, sub.route) }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label))))))))))));
@@ -62,23 +70,5 @@ export class NavbarFooter {
         return {
             "openIndex": {}
         };
-    }
-    static get events() {
-        return [{
-                "method": "navigate",
-                "name": "navigate",
-                "bubbles": true,
-                "cancelable": true,
-                "composed": true,
-                "docs": {
-                    "tags": [],
-                    "text": ""
-                },
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                }
-            }];
     }
 }
