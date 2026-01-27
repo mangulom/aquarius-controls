@@ -4,12 +4,15 @@ export class CardGeneral {
     width = '300px';
     /** Alto del card */
     height = 'auto';
-    render() {
-        const style = {
+    getStyle() {
+        return {
             width: this.width,
-            height: this.height
+            height: this.height,
+            display: 'block'
         };
-        return (h("div", { key: '2ac40adb342ef0abb113c8a5e97a7cf61c0229fe', class: "card", style: style }, h("div", { key: '9b00eee8fde4e0d5379be798f7e14057b6c497df', class: "card-inner" }, h("slot", { key: 'ac0ed36b219c628b52d2d1243aee5e9ef7f31e3f' }))));
+    }
+    render() {
+        return (h("div", { key: 'a83603b4a232e191bfbd0767ce5bf1d31186fdd3', class: "card", style: this.getStyle() }, h("div", { key: '8cdfeb8044ae3e13b9cf459df4afdad9dc136687', class: "card-inner" }, h("slot", { key: '973c335575b7f4830dea0a64632d44221d640caa' }))));
     }
     static get is() { return "card-general"; }
     static get originalStyleUrls() {

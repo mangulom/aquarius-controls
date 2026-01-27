@@ -13,14 +13,17 @@ export class CardGeneral {
   /** Alto del card */
   @Prop() height: string = 'auto';
 
-  render() {
-    const style = {
+  private getStyle(): { [key: string]: string } {
+    return {
       width: this.width,
-      height: this.height
+      height: this.height,
+      display: 'block'
     };
+  }
 
+  render() {
     return (
-      <div class="card" style={style}>
+      <div class="card" style={this.getStyle()}>
         <div class="card-inner">
           <slot></slot>
         </div>

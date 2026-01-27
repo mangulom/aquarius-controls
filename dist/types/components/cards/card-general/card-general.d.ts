@@ -3,5 +3,6 @@ export declare class CardGeneral {
     width: string;
     /** Alto del card */
     height: string;
+    private getStyle;
     render(): any;
 }

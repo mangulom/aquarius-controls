@@ -2,7 +2,7 @@
 
 var index = require('./index-DFncYVIQ.js');
 
-const cardGeneralCss = () => `:host{display:inline-block;font-family:var(--app-font-family, Arial, sans-serif)}.card{position:relative;border-radius:16px;border:3px solid rgba(0,0,0,0.2);border-color:color-mix(      in srgb,      var(--app-primary-color, #0d6efd) 40%,      transparent    );background-color:color-mix(      in srgb,      var(--app-primary-color, #0d6efd) 12%,      transparent    );box-shadow:0 8px 20px rgba(0,0,0,0.15);padding:12px;transition:transform 0.2s ease, box-shadow 0.2s ease}.card:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,0.2)}.card-inner{background:white;border-radius:12px;padding:16px;height:100%;box-sizing:border-box}`;
+const cardGeneralCss = () => `:host{display:block;width:100%;box-sizing:border-box;--card-primary-color:rgba(13, 110, 253, 0.15);--card-border-color:rgba(13, 110, 253, 0.5);--card-shadow-color:rgba(0, 0, 0, 0.15)}.card{width:100%;height:100%;min-height:80px;padding:12px;box-sizing:border-box;border-radius:16px;border:3px solid var(--card-border-color);background:var(--card-primary-color);box-shadow:0 6px 12px var(--card-shadow-color);transition:transform 0.2s ease,      box-shadow 0.2s ease}.card:hover{transform:translateY(-2px);box-shadow:0 10px 18px var(--card-shadow-color)}.card-inner{width:100%;height:100%;background:rgba(255, 255, 255, 0.9);border-radius:12px;padding:16px;box-sizing:border-box}@media (max-width: 768px){.card{padding:8px;border-radius:12px}.card-inner{padding:12px}}`;
 
 const CardGeneral = class {
     constructor(hostRef) {
@@ -12,12 +12,15 @@ const CardGeneral = class {
     width = '300px';
     /** Alto del card */
     height = 'auto';
-    render() {
-        const style = {
+    getStyle() {
+        return {
             width: this.width,
-            height: this.height
+            height: this.height,
+            display: 'block'
         };
-        return (index.h("div", { key: '2ac40adb342ef0abb113c8a5e97a7cf61c0229fe', class: "card", style: style }, index.h("div", { key: '9b00eee8fde4e0d5379be798f7e14057b6c497df', class: "card-inner" }, index.h("slot", { key: 'ac0ed36b219c628b52d2d1243aee5e9ef7f31e3f' }))));
+    }
+    render() {
+        return (index.h("div", { key: 'a83603b4a232e191bfbd0767ce5bf1d31186fdd3', class: "card", style: this.getStyle() }, index.h("div", { key: '8cdfeb8044ae3e13b9cf459df4afdad9dc136687', class: "card-inner" }, index.h("slot", { key: '973c335575b7f4830dea0a64632d44221d640caa' }))));
     }
 };
 CardGeneral.style = cardGeneralCss();
