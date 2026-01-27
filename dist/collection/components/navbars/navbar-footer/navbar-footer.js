@@ -2,30 +2,19 @@ import { h } from "@stencil/core";
 export class NavbarFooter {
     items = [];
     openIndex = null;
+    // Evento garantizado para Angular
+    navigate;
     toggleDropdown(index) {
         this.openIndex = this.openIndex === index ? null : index;
     }
-    handleClick(event, route) {
-        event.stopPropagation();
+    handleClick(route) {
         if (route) {
-            console.log('Emit route:', route);
-            // Emite evento nativo del DOM
-            this.el.dispatchEvent(new CustomEvent('navigate', {
-                detail: route,
-                bubbles: true,
-                composed: true
-            }));
+            console.log('Emit route:', route); // <-- Verifica en consola
+            this.navigate.emit(route);
         }
     }
-    el;
-    connectedCallback() {
-        this.el = this;
-    }
     render() {
-        return (h("footer", { key: 'b465a034edb9adddb716a95e67120af1ab400a78', class: "navbar-footer" }, h("div", { key: 'd105ca4fd8e14f9ddf078971749a6d12d855417a', class: "navbar-buttons" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper" }, h("button", { class: "nav-item", onClick: (event) => item.route ? this.handleClick(event, item.route) : this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && (h("div", { class: {
-                'subitems-container': true,
-                'open': this.openIndex === index
-            } }, item.subitems.map(sub => (h("button", { class: "subitem", onClick: (event) => this.handleClick(event, sub.route) }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label))))))))))));
+        return (h("footer", { key: '7750ed4e2de3294d6ba7e3beeb6624e47ec9b8b7', class: "navbar-footer" }, h("div", { key: '0d3507d132f87a69c6f9ff1ae118c34503739b59', class: "navbar-buttons" }, this.items.map((item, index) => (h("div", { class: "nav-item-wrapper", key: index }, h("button", { class: "nav-item", onClick: () => item.route ? this.handleClick(item.route) : this.toggleDropdown(index) }, item.icon && h("i", { class: item.icon }), h("span", null, item.label)), item.subitems && (h("div", { class: { 'subitems-container': true, 'open': this.openIndex === index } }, item.subitems.map((sub, subIndex) => (h("button", { class: "subitem", key: subIndex, onClick: () => this.handleClick(sub.route) }, sub.icon && h("i", { class: sub.icon }), h("span", null, sub.label))))))))))));
     }
     static get is() { return "navbar-footer"; }
     static get originalStyleUrls() {
@@ -70,5 +59,23 @@ export class NavbarFooter {
         return {
             "openIndex": {}
         };
+    }
+    static get events() {
+        return [{
+                "method": "navigate",
+                "name": "navigate",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                }
+            }];
     }
 }

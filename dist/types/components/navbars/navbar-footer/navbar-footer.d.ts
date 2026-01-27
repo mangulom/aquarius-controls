@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../../stencil-public-runtime';
 export interface NavbarItem {
     label: string;
     icon?: string;
@@ -7,9 +8,8 @@ export interface NavbarItem {
 export declare class NavbarFooter {
     items: NavbarItem[];
     openIndex: number | null;
+    navigate: EventEmitter<string>;
     toggleDropdown(index: number): void;
-    handleClick(event: MouseEvent, route?: string): void;
-    private el;
-    connectedCallback(): void;
+    handleClick(route?: string): void;
     render(): any;
 }

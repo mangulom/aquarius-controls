@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BhkWo07D.js');
+var index = require('./index-BUjT0nfd.js');
 var appGlobals = require('./app-globals-V2Kpy_OQ.js');
 
 var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
