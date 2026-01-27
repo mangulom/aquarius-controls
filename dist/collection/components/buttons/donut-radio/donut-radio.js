@@ -5,17 +5,37 @@ export class DonutRadio {
     label;
     color = 'PRIMARY';
     checked = false;
-    onClick = () => {
+    // Convierte nombre de color a hexadecimal
+    resolveColor() {
+        const colors = {
+            PRIMARY: '#0d6efd',
+            SUCCESS: '#198754',
+            DANGER: '#dc3545',
+            WARNING: '#ffc107',
+            INFO: '#0dcaf0',
+            SECONDARY: '#6c757d',
+            DARK: '#212529',
+            LIGHT: '#ffffff',
+        };
+        return colors[this.color?.toUpperCase()] || this.color;
+    }
+    syncGroup() {
         const group = document.querySelectorAll(`donut-radio[name="${this.name}"]`);
         group.forEach((radio) => {
             if (radio !== this.el) {
                 radio.checked = false;
             }
         });
+    }
+    onClick = () => {
+        this.syncGroup();
         this.checked = true;
     };
     render() {
-        return (h("label", { key: '7a7f1f283579e7be9fbf7e43f0cd889da337389c', class: "radio" }, h("input", { key: '205c93ca051526cb90b8085afdaf3c5ce6d0bb18', type: "radio", checked: this.checked, onClick: this.onClick, color: this.color }), h("span", { key: '8609236ae2c3ab85e7026695a4a8b06bdce99658', class: "control" }), h("span", { key: '0d48b6aee5ec8708dbb0e26b23a4ce3aa6987e40', class: "label" }, this.label)));
+        const style = {
+            '--radio-color': this.resolveColor(),
+        };
+        return (h("label", { key: '8a0364a31ca340eb7ecbe9372f807d3166c56fb9', class: "radio", style: style }, h("input", { key: '05a79f007d9fcb2c68ae113314678c01d250a824', type: "radio", checked: this.checked, onClick: this.onClick }), h("span", { key: 'e30e7d7f5528e949d94bb68c361d6dbe6648de6f', class: "control" }), h("span", { key: 'f18f6c1b769ed02149b33320bc5b402a58572660', class: "label" }, this.label)));
     }
     static get is() { return "donut-radio"; }
     static get encapsulation() { return "shadow"; }
