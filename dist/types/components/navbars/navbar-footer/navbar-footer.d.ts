@@ -10,6 +10,6 @@ export declare class NavbarFooter {
     openIndex: number | null;
     navigate: EventEmitter<string>;
     toggleDropdown(index: number): void;
-    handleClick(route?: string): void;
+    handleClick(event: MouseEvent, route?: string): void;
     render(): any;
 }

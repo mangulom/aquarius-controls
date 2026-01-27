@@ -11,20 +11,22 @@ const NavbarFooter = class {
     }
     items = [];
     openIndex = null;
-    navigate; // Evento custom para Angular
+    // Evento custom
+    navigate;
     toggleDropdown(index) {
         this.openIndex = this.openIndex === index ? null : index;
     }
-    handleClick(route) {
+    handleClick(event, route) {
+        event.stopPropagation(); // Evita que se cierre el dropdown al hacer click
         if (route) {
-            this.navigate.emit(route); // Emite la ruta si existe
+            this.navigate.emit(route); // Emitir la ruta
         }
     }
     render() {
-        return (index.h("footer", { key: '942559200bf62a45783513a9d1322d897c7a1ccf', class: "navbar-footer" }, index.h("div", { key: '7a87e56d5f8750a08bd3ed8857b077f497641a66', class: "navbar-buttons" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: () => item.route ? this.handleClick(item.route) : this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && (index.h("div", { class: {
+        return (index.h("footer", { key: 'ec1c509c3f23578954df5e69c288e8c496c125e2', class: "navbar-footer" }, index.h("div", { key: '171cabaa84043fcbf6a4c7aa0919a58b2c0b2ae6', class: "navbar-buttons" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: (event) => item.route ? this.handleClick(event, item.route) : this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && (index.h("div", { class: {
                 'subitems-container': true,
                 'open': this.openIndex === index$1
-            } }, item.subitems.map(sub => (index.h("button", { class: "subitem", onClick: () => this.handleClick(sub.route) }, sub.icon && index.h("i", { class: sub.icon }), index.h("span", null, sub.label))))))))))));
+            } }, item.subitems.map(sub => (index.h("button", { class: "subitem", onClick: (event) => this.handleClick(event, sub.route) }, sub.icon && index.h("i", { class: sub.icon }), index.h("span", null, sub.label))))))))))));
     }
 };
 NavbarFooter.style = navbarFooterCss();
