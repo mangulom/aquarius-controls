@@ -7,9 +7,10 @@ export class GeneralButton {
     color = 'PRIMARY';
     render() {
         const colorClass = `btn-${this.color.toLowerCase()}`; // btn-primary, btn-danger, etc.
-        return (h("button", { key: 'da3f890a46c1e4800fb63f8350c857225d2b3512', disabled: this.disabled, class: `general-button ${colorClass}` }, this.icon && h("i", { key: '49139511e0aa14a0ecf7df3eb428733aa8ff3a0c', class: this.icon }), h("span", { key: '70d91300e28cf19cc93a1655bb8a189a228ad3c0' }, this.label)));
+        return (h("button", { key: 'a40c4adb3fb020dacad3a6078233940965c6b9a1', disabled: this.disabled, class: `general-button ${colorClass}` }, this.icon && h("i", { key: '4eafd560d987fb787a17fec0b48ab977eabd9825', class: this.icon }), h("span", { key: '1ebd34607d26bbeb25b0bbd633b631562508e7a1' }, this.label)));
     }
     static get is() { return "general-button"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["general-button.css"]
