@@ -9,7 +9,7 @@ export interface NavbarItem {
 @Component({
   tag: 'navbar-footer',
   styleUrl: 'navbar-footer.css',
-  shadow: true
+  shadow: false
 })
 export class NavbarFooter {
 

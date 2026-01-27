@@ -14,7 +14,7 @@ const NavbarFooter = class {
         this.openIndex = this.openIndex === index ? null : index;
     }
     render() {
-        return (index.h("footer", { key: '734d24503983e12f9d2eb10a17ab28e87f3e5309', class: "navbar-footer" }, index.h("div", { key: '3c1b4510c4d0bfc54071c448faf3c084bcae846f', class: "navbar-buttons" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && (index.h("div", { class: {
+        return (index.h("footer", { key: 'a926e955edad51d274d2c544481588e0e0571498', class: "navbar-footer" }, index.h("div", { key: '52c44c9b62a37a9160798d76ee71588b0a7ddfce', class: "navbar-buttons" }, this.items.map((item, index$1) => (index.h("div", { class: "nav-item-wrapper" }, index.h("button", { class: "nav-item", onClick: () => this.toggleDropdown(index$1) }, item.icon && index.h("i", { class: item.icon }), index.h("span", null, item.label)), item.subitems && (index.h("div", { class: {
                 'subitems-container': true,
                 'open': this.openIndex === index$1
             } }, item.subitems.map(sub => (index.h("button", { class: "subitem" }, sub.icon && index.h("i", { class: sub.icon }), index.h("span", null, sub.label))))))))))));
