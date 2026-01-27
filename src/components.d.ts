@@ -10,6 +10,18 @@ import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizonta
 export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
 export namespace Components {
+    interface AppCard {
+        /**
+          * Alto del card
+          * @default 'auto'
+         */
+        "height": string;
+        /**
+          * Ancho del card
+          * @default '300px'
+         */
+        "width": string;
+    }
     interface DonutRadio {
         /**
           * @default 'PRIMARY'
@@ -88,6 +100,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAppCardElement extends Components.AppCard, HTMLStencilElement {
+    }
+    var HTMLAppCardElement: {
+        prototype: HTMLAppCardElement;
+        new (): HTMLAppCardElement;
+    };
     interface HTMLDonutRadioElement extends Components.DonutRadio, HTMLStencilElement {
     }
     var HTMLDonutRadioElement: {
@@ -125,6 +143,7 @@ declare global {
         new (): HTMLTableGeneralElement;
     };
     interface HTMLElementTagNameMap {
+        "app-card": HTMLAppCardElement;
         "donut-radio": HTMLDonutRadioElement;
         "general-button": HTMLGeneralButtonElement;
         "hold-expand-button": HTMLHoldExpandButtonElement;
@@ -134,6 +153,18 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AppCard {
+        /**
+          * Alto del card
+          * @default 'auto'
+         */
+        "height"?: string;
+        /**
+          * Ancho del card
+          * @default '300px'
+         */
+        "width"?: string;
+    }
     interface DonutRadio {
         /**
           * @default 'PRIMARY'
@@ -211,6 +242,7 @@ declare namespace LocalJSX {
         "data"?: any[] | string;
     }
     interface IntrinsicElements {
+        "app-card": AppCard;
         "donut-radio": DonutRadio;
         "general-button": GeneralButton;
         "hold-expand-button": HoldExpandButton;
@@ -223,6 +255,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-card": LocalJSX.AppCard & JSXBase.HTMLAttributes<HTMLAppCardElement>;
             "donut-radio": LocalJSX.DonutRadio & JSXBase.HTMLAttributes<HTMLDonutRadioElement>;
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
             "hold-expand-button": LocalJSX.HoldExpandButton & JSXBase.HTMLAttributes<HTMLHoldExpandButtonElement>;
