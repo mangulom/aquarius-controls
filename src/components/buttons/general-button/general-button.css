@@ -2,7 +2,7 @@
   font-family: var(--app-font-family, Arial, sans-serif);
 }
 
-button {
+:host button {
   position: relative;
   display: inline-flex;
   align-items: center;

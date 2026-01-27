@@ -6,7 +6,7 @@
    Botón base
 ========================== */
 
-button.hold-button {
+:host button.hold-button {
   position: relative;
   width: 56px;
   height: 56px;
