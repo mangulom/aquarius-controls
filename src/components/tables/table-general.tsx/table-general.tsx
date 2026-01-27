@@ -5,7 +5,7 @@ export type TableColor = 'PRIMARY' | 'SUCCESS' | 'DANGER' | 'WARNING' | 'INFO' |
 @Component({
   tag: 'table-general',
   styleUrl: 'table-general.css',
-  shadow: false
+  shadow: true
 })
 export class TableGeneral {
 

@@ -3,7 +3,7 @@ import { Component, Prop, State, h } from '@stencil/core';
 @Component({
     tag: 'hold-expand-button',
     styleUrl: 'hold-expand-button.css',
-    shadow: false
+    shadow: true
 })
 export class HoldExpandButton {
 

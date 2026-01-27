@@ -22,9 +22,10 @@ export class HoldExpandButton {
     };
     render() {
         const colorClass = `btn-${this.color.toLowerCase()}`;
-        return (h("button", { key: '9c0899837e15c67febdd38a7f0fe531330a234e3', disabled: this.disabled, class: `hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, h("div", { key: 'e0643dd27fbdca5fb189c901ee543b0ebb508800', class: "center" }, this.icon && h("i", { key: '26493977548fdee6ddaa82903236c621d2dcd753', class: this.icon }), h("span", { key: '9e2466867093af9120c9bf35619355427a18beb7', class: "label" }, this.label))));
+        return (h("button", { key: '23175cd3dbffb7948acfab85ebbdaa162b396be1', disabled: this.disabled, class: `hold-button ${colorClass} ${this.expanded ? 'expanded' : ''}`, onMouseDown: this.startHold, onMouseUp: this.endHold, onMouseLeave: this.endHold, onTouchStart: this.startHold, onTouchEnd: this.endHold }, h("div", { key: '1a464119de9c9181c77d6543db25766c8b915a9c', class: "center" }, this.icon && h("i", { key: 'ff3ccee7ce7af4702f31a04a489c30c657e3230c', class: this.icon }), h("span", { key: '06a241b2a316e857233101e1be59254b7af64283', class: "label" }, this.label))));
     }
     static get is() { return "hold-expand-button"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["hold-expand-button.css"]

@@ -9,7 +9,7 @@ export interface NavbarItem {
 @Component({
   tag: 'navbar-horizontal',
   styleUrl: 'navbar-horizontal.css',
-  shadow: false
+  shadow: true
 })
 export class NavbarHorizontal {
 

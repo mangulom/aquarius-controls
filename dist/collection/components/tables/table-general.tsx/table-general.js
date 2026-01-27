@@ -51,9 +51,10 @@ export class TableGeneral {
     }
     render() {
         const columnsArr = this.parseProp(this.columns);
-        return (h("div", { key: '11890a81eab8ed0e088cde64bb6f8d58b300494e', class: "table-responsive" }, h("table", { key: '2db05a13cfc7dc46d50b38d059eb514c07cc5289', class: "styled-table" }, h("thead", { key: 'a3608a7c31218d218f29b89425fc9c07b116b507' }, h("tr", { key: 'c7d6add0734d2f6beeae85d7debaf4a7984cf7cc' }, columnsArr.map(col => (h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), h("tbody", { key: 'a3059ce718da497084b332430362c1da342ae6a6' }, this.sortedData.map(row => (h("tr", null, columnsArr.map(col => (h("td", null, row[col.key]))))))))));
+        return (h("div", { key: '83cbe7a375079219e5599553a0f64731d2e08632', class: "table-responsive" }, h("table", { key: 'da2181d7a7ee65be41b378623dc17ea5d8a36428', class: "styled-table" }, h("thead", { key: 'e25559d77556e662ee019c4e1f1f3d8a4174df62' }, h("tr", { key: '44dbaf0ef7fd1df3b66875a02bb685265cc6336b' }, columnsArr.map(col => (h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), h("tbody", { key: 'db214d00ee01a68af980b369949b298512bf8631' }, this.sortedData.map(row => (h("tr", null, columnsArr.map(col => (h("td", null, row[col.key]))))))))));
     }
     static get is() { return "table-general"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["table-general.css"]

@@ -12,9 +12,10 @@ export class CardGeneral {
         };
     }
     render() {
-        return (h("div", { key: 'a83603b4a232e191bfbd0767ce5bf1d31186fdd3', class: "card", style: this.getStyle() }, h("div", { key: '8cdfeb8044ae3e13b9cf459df4afdad9dc136687', class: "card-inner" }, h("slot", { key: '973c335575b7f4830dea0a64632d44221d640caa' }))));
+        return (h("div", { key: '9df96515899fb728087b70ce2c7bd706c37c8f63', class: "card", style: this.getStyle() }, h("div", { key: 'b1dc099d70b8c2c9862ff05ed44888b28693f9f7', class: "card-inner" }, h("slot", { key: 'a754e9f6ca47a999ad0a58c9a4e33d1b5b8bfbed' }))));
     }
     static get is() { return "card-general"; }
+    static get encapsulation() { return "shadow"; }
     static get originalStyleUrls() {
         return {
             "$": ["card-general.css"]

@@ -3,7 +3,7 @@ import { Component, Prop, h } from '@stencil/core';
 @Component({
   tag: 'card-general',
   styleUrl: 'card-general.css',
-  shadow: false
+  shadow: true
 })
 export class CardGeneral {
 
