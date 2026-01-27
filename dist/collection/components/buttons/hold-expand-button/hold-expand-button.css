@@ -30,24 +30,24 @@
 }
 
 /* ==========================
-   Capa de centrado absoluta (blindaje)
+   Capa de centrado
 ========================== */
 
-button.hold-button .center {
+:host button.hold-button .center {
   position: absolute;
-  inset: 0;                         /* top:0 right:0 bottom:0 left:0 */
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  pointer-events: none;            /* evita interferencias */
+  pointer-events: none;
 }
 
 /* ==========================
    Borde interior
 ========================== */
 
-button.hold-button::before {
+:host button.hold-button::before {
   content: '';
   position: absolute;
   inset: 3px;
@@ -61,12 +61,12 @@ button.hold-button::before {
    Estado expandido
 ========================== */
 
-button.hold-button.expanded {
+:host button.hold-button.expanded {
   width: 180px;
   border-radius: 20px;
 }
 
-button.hold-button.expanded::before {
+:host button.hold-button.expanded::before {
   border-radius: 16px;
 }
 
@@ -74,7 +74,7 @@ button.hold-button.expanded::before {
    Texto
 ========================== */
 
-button.hold-button .label {
+:host button.hold-button .label {
   white-space: nowrap;
   opacity: 0;
   max-width: 0;
@@ -85,7 +85,7 @@ button.hold-button .label {
     max-width 0.35s ease;
 }
 
-button.hold-button.expanded .label {
+:host button.hold-button.expanded .label {
   opacity: 1;
   max-width: 120px;
 }
@@ -94,7 +94,7 @@ button.hold-button.expanded .label {
    Hover
 ========================== */
 
-button.hold-button:hover {
+:host button.hold-button:hover {
   filter: brightness(1.15);
   transform: translateY(-1px);
 }
@@ -103,12 +103,12 @@ button.hold-button:hover {
    Active
 ========================== */
 
-button.hold-button:active {
+:host button.hold-button:active {
   transform: translateY(1px) scale(0.97);
   filter: brightness(0.9);
 }
 
-button.hold-button:active::before {
+:host button.hold-button:active::before {
   border-color: rgba(255,255,255,0.6);
 }
 
@@ -116,24 +116,24 @@ button.hold-button:active::before {
    Colores Bootstrap
 ========================== */
 
-.hold-button.btn-primary   { background-color: #0063a7; }
-.hold-button.btn-success   { background-color: #198754; }
-.hold-button.btn-danger    { background-color: #dc3545; }
-.hold-button.btn-warning   { background-color: #ffc107; color: #212529; }
-.hold-button.btn-info      { background-color: #1192d1; color: #212529; }
-.hold-button.btn-secondary { background-color: #6c757d; }
-.hold-button.btn-dark      { background-color: #212529; }
+:host .hold-button.btn-primary   { background-color: #0063a7; }
+:host .hold-button.btn-success   { background-color: #198754; }
+:host .hold-button.btn-danger    { background-color: #dc3545; }
+:host .hold-button.btn-warning   { background-color: #ffc107; color: #212529; }
+:host .hold-button.btn-info      { background-color: #1192d1; color: #212529; }
+:host .hold-button.btn-secondary { background-color: #6c757d; }
+:host .hold-button.btn-dark      { background-color: #212529; }
 
-.hold-button.btn-light {
+:host .hold-button.btn-light {
   background-color: #f8f9fa;
   color: #212529;
 }
 
-.hold-button.btn-light::before {
+:host .hold-button.btn-light::before {
   border-color: #adb5bd;
 }
 
-.hold-button.btn-light:hover {
+:host .hold-button.btn-light:hover {
   background-color: #e9ecef;
 }
 
@@ -141,7 +141,7 @@ button.hold-button:active::before {
    Disabled
 ========================== */
 
-button.hold-button:disabled {
+:host button.hold-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
@@ -152,7 +152,7 @@ button.hold-button:disabled {
    Icono
 ========================== */
 
-button.hold-button i {
+:host button.hold-button i {
   display: flex;
   align-items: center;
   padding-left: 12px !important;

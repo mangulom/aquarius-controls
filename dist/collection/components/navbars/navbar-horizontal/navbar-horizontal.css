@@ -1,22 +1,28 @@
 :host {
   font-family: var(--app-font-family, Arial, sans-serif);
+  display: block;
 }
 
-.navbar {
+/* =========================
+   Navbar container
+========================= */
+:host .navbar {
   display: flex;
   gap: 10px;
   background: #0063A7;
   padding: 10px;
 }
 
-/* Botones principales cuadrados */
-.nav-item-wrapper {
+/* =========================
+   Botones principales
+========================= */
+:host .nav-item-wrapper {
   position: relative;
 }
 
-.nav-item {
+:host .nav-item {
   display: flex;
-  flex-direction: column; /* icono arriba, texto abajo */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 80px;
@@ -31,16 +37,18 @@
   transition: background 0.2s;
 }
 
-.nav-item:hover {
+:host .nav-item:hover {
   background: #0056b3;
 }
 
-.nav-item i {
+:host .nav-item i {
   font-size: 1.5rem;
 }
 
-/* Subitems (dropdown lateral) */
-.subitems {
+/* =========================
+   Subitems
+========================= */
+:host .subitems {
   position: absolute;
   top: 0;
   left: 100%;
@@ -53,7 +61,7 @@
   z-index: 10;
 }
 
-.subitem {
+:host .subitem {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -66,10 +74,10 @@
   white-space: nowrap;
 }
 
-.subitem i {
+:host .subitem i {
   font-size: 1rem;
 }
 
-.subitem:hover {
+:host .subitem:hover {
   background: #e0e0e0;
 }

@@ -6,8 +6,7 @@
 /* ==========================
    Contenedor
 ========================== */
-
-.radio {
+:host .radio {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -19,8 +18,7 @@
 /* ==========================
    Input oculto (reset total)
 ========================== */
-
-.radio input {
+:host .radio input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -33,8 +31,7 @@
 /* ==========================
    Donut base
 ========================== */
-
-.control {
+:host .control {
   --size: 20px;
 
   width: var(--size);
@@ -55,7 +52,7 @@
 }
 
 /* Anillo interno */
-.control::after {
+:host .control::after {
   content: "";
   position: absolute;
   inset: 4px;
@@ -65,14 +62,13 @@
 }
 
 /* ==========================
-   Estado checked (usa variable)
+   Estado checked
 ========================== */
-
-.radio input:checked + .control {
+:host .radio input:checked + .control {
   border-color: var(--radio-color);
 }
 
-.radio input:checked + .control::after {
+:host .radio input:checked + .control::after {
   background: var(--radio-color);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.35);
 }
@@ -80,8 +76,7 @@
 /* ==========================
    Hover
 ========================== */
-
-.radio:hover .control {
+:host .radio:hover .control {
   filter: brightness(1.05);
   transform: scale(1.05);
 }
@@ -89,17 +84,15 @@
 /* ==========================
    Disabled
 ========================== */
-
 :host(.disabled) {
   opacity: 0.5;
   pointer-events: none;
 }
 
 /* ==========================
-   Texto (no se colorea)
+   Texto
 ========================== */
-
-.label {
+:host .label {
   font-size: 14px;
   color: #212529;
   line-height: 1.2;

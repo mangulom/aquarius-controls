@@ -2,7 +2,10 @@
   font-family: var(--app-font-family, Arial, sans-serif);
 }
 
-.navbar-footer {
+/* =========================
+   Footer Navbar
+========================= */
+:host .navbar-footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -15,17 +18,17 @@
 }
 
 /* Botones principales */
-.navbar-buttons {
+:host .navbar-buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 4px;
 }
 
-.nav-item-wrapper {
+:host .nav-item-wrapper {
   position: relative;
 }
 
-.nav-item {
+:host .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,45 +47,45 @@
   transition: background 0.2s;
 }
 
-.nav-item:hover {
+:host .nav-item:hover {
   background: #0056a0;
 }
 
-.nav-item i {
+:host .nav-item i {
   font-size: 1.3rem;
 }
 
-/* Contenedor de subitems */
-.subitems-container {
+/* =========================
+   Subitems
+========================= */
+:host .subitems-container {
   position: absolute;
-  bottom: 100%; /* aparece arriba del botón */
+  bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(20px); /* fuera de vista inicialmente */
+  transform: translateX(-50%) translateY(20px);
   opacity: 0;
   display: flex;
   flex-direction: column;
-  background: #0063A7; /* mismo color que barra */
-  border-radius: 12px;  /* bordes redondeados */
+  background: #0063A7;
+  border-radius: 12px;
   padding: 8px 0;
-  min-width: 180px;     /* más ancho para padding horizontal */
+  min-width: 180px;
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 10;
 }
 
-/* Cuando se abre */
-.subitems-container.open {
+:host .subitems-container.open {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Subitems */
-.subitem {
+:host .subitem {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 16px; /* más padding horizontal y vertical */
+  padding: 8px 16px;
   background: transparent;
   color: white;
   border: 2px solid transparent;
@@ -94,18 +97,19 @@
   transition: background 0.2s, border 0.2s;
 }
 
-.subitem i {
+:host .subitem i {
   font-size: 1rem;
 }
 
-/* Hover de subitems: borde blanco y ligero cambio */
-.subitem:hover {
+:host .subitem:hover {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid white;
 }
 
-/* Línea inferior blanca con texto muy pequeño */
-.footer-text {
+/* =========================
+   Footer text
+========================= */
+:host .footer-text {
   width: 100%;
   text-align: center;
   font-size: 0.6rem;
