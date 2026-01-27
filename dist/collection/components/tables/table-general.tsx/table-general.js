@@ -51,7 +51,7 @@ export class TableGeneral {
     }
     render() {
         const columnsArr = this.parseProp(this.columns);
-        return (h("div", { key: '1fdc7ca1222cd4903606d233cdc07a7ec4c5d78b', class: "table-responsive" }, h("table", { key: 'd81fa2c21f669c1f552d3e3b05a2996ffdd8bb43', class: "styled-table" }, h("thead", { key: '06342516323fe5d091eb595f657d28b0bd31e5a8' }, h("tr", { key: 'c4a4f4c6d4e625bbe9e1012541c4dba234085a2e' }, columnsArr.map(col => (h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), h("tbody", { key: '84592feecf6c07a11b0b2145a476cc8aea4ee31e' }, this.sortedData.map(row => (h("tr", null, columnsArr.map(col => (h("td", null, row[col.key]))))))))));
+        return (h("div", { key: '11890a81eab8ed0e088cde64bb6f8d58b300494e', class: "table-responsive" }, h("table", { key: '2db05a13cfc7dc46d50b38d059eb514c07cc5289', class: "styled-table" }, h("thead", { key: 'a3608a7c31218d218f29b89425fc9c07b116b507' }, h("tr", { key: 'c7d6add0734d2f6beeae85d7debaf4a7984cf7cc' }, columnsArr.map(col => (h("th", { class: col.color ? `th-${col.color.toLowerCase()}` : '', onClick: () => this.sortByColumn(col.key) }, col.label, this.sortKey === col.key && (h("span", { class: "sort-indicator" }, this.sortAsc ? ' ▲' : ' ▼'))))))), h("tbody", { key: 'a3059ce718da497084b332430362c1da342ae6a6' }, this.sortedData.map(row => (h("tr", null, columnsArr.map(col => (h("td", null, row[col.key]))))))))));
     }
     static get is() { return "table-general"; }
     static get originalStyleUrls() {

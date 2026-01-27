@@ -10,7 +10,7 @@ import { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizonta
 export { NavbarItem } from "./components/navbars/navbar-footer/navbar-footer";
 export { NavbarItem as NavbarItem1 } from "./components/navbars/navbar-horizontal/navbar-horizontal";
 export namespace Components {
-    interface AppCard {
+    interface CardGeneral {
         /**
           * Alto del card
           * @default 'auto'
@@ -100,11 +100,11 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLAppCardElement extends Components.AppCard, HTMLStencilElement {
+    interface HTMLCardGeneralElement extends Components.CardGeneral, HTMLStencilElement {
     }
-    var HTMLAppCardElement: {
-        prototype: HTMLAppCardElement;
-        new (): HTMLAppCardElement;
+    var HTMLCardGeneralElement: {
+        prototype: HTMLCardGeneralElement;
+        new (): HTMLCardGeneralElement;
     };
     interface HTMLDonutRadioElement extends Components.DonutRadio, HTMLStencilElement {
     }
@@ -143,7 +143,7 @@ declare global {
         new (): HTMLTableGeneralElement;
     };
     interface HTMLElementTagNameMap {
-        "app-card": HTMLAppCardElement;
+        "card-general": HTMLCardGeneralElement;
         "donut-radio": HTMLDonutRadioElement;
         "general-button": HTMLGeneralButtonElement;
         "hold-expand-button": HTMLHoldExpandButtonElement;
@@ -153,7 +153,7 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface AppCard {
+    interface CardGeneral {
         /**
           * Alto del card
           * @default 'auto'
@@ -242,7 +242,7 @@ declare namespace LocalJSX {
         "data"?: any[] | string;
     }
     interface IntrinsicElements {
-        "app-card": AppCard;
+        "card-general": CardGeneral;
         "donut-radio": DonutRadio;
         "general-button": GeneralButton;
         "hold-expand-button": HoldExpandButton;
@@ -255,7 +255,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-card": LocalJSX.AppCard & JSXBase.HTMLAttributes<HTMLAppCardElement>;
+            "card-general": LocalJSX.CardGeneral & JSXBase.HTMLAttributes<HTMLCardGeneralElement>;
             "donut-radio": LocalJSX.DonutRadio & JSXBase.HTMLAttributes<HTMLDonutRadioElement>;
             "general-button": LocalJSX.GeneralButton & JSXBase.HTMLAttributes<HTMLGeneralButtonElement>;
             "hold-expand-button": LocalJSX.HoldExpandButton & JSXBase.HTMLAttributes<HTMLHoldExpandButtonElement>;

@@ -5,6 +5,7 @@
     "components/buttons/donut-radio/donut-radio.js",
     "components/buttons/general-button/general-button.js",
     "components/buttons/hold-expand-button/hold-expand-button.js",
+    "components/cards/card-general/card-general.js",
     "components/tables/table-general.tsx/table-general.js"
   ],
   "compiler": {

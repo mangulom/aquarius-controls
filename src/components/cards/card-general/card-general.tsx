@@ -1,11 +1,11 @@
 import { Component, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'app-card',
-  styleUrl: 'app-card.css',
+  tag: 'card-general',
+  styleUrl: 'card-general.css',
   shadow: false
 })
-export class AppCard {
+export class CardGeneral {
 
   /** Ancho del card */
   @Prop() width: string = '300px';
